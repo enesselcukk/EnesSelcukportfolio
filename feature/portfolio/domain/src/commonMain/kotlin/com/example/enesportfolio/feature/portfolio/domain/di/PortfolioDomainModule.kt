@@ -1,5 +1,6 @@
 package com.example.enesportfolio.feature.portfolio.domain.di
 
+import com.example.enesportfolio.feature.portfolio.domain.usecase.DownloadPortfolioCvUseCase
 import com.example.enesportfolio.feature.portfolio.domain.usecase.GetPortfolioCopyUseCase
 import com.example.enesportfolio.feature.portfolio.domain.usecase.ObserveLanguageUseCase
 import com.example.enesportfolio.feature.portfolio.domain.usecase.SetLanguageUseCase
@@ -10,4 +11,5 @@ val portfolioDomainModule = module {
     factoryOf(::ObserveLanguageUseCase)
     factoryOf(::SetLanguageUseCase)
     factoryOf(::GetPortfolioCopyUseCase)
+    factoryOf(::DownloadPortfolioCvUseCase)
 }

@@ -1,13 +1,19 @@
 package com.example.enesportfolio.feature.portfolio.presentation.di
 
 import com.example.enesportfolio.core.navigation.NavEntryProvider
+import com.example.enesportfolio.feature.portfolio.presentation.cv.PortfolioCvDownloader
 import com.example.enesportfolio.feature.portfolio.presentation.navigate.PortfolioProvider
 import com.example.enesportfolio.feature.portfolio.presentation.ui.PortfolioViewModel
+import com.example.enesportfolio.feature.portfolio.domain.repository.CvDownloader
+import org.koin.core.module.dsl.singleOf
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.core.qualifier.named
+import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val portfolioPresentationModule = module {
+    singleOf(::PortfolioCvDownloader) bind CvDownloader::class
+
     single<NavEntryProvider>(named("PortfolioProvider")) {
         PortfolioProvider()
     }

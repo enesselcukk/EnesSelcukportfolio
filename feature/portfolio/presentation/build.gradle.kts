@@ -24,6 +24,7 @@ kotlin {
             implementation(project(":core:navigation"))
             implementation(project(":feature:portfolio:contract"))
             implementation(project(":feature:portfolio:domain"))
+            implementation(project(":feature:portfolio:data"))
             implementation(project(":app:ui-components"))
             implementation(libs.compose.runtime)
             implementation(libs.compose.animation)

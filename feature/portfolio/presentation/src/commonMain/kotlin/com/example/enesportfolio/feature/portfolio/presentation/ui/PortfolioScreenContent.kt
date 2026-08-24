@@ -129,11 +129,12 @@ internal fun PortfolioScreenContent(
             item(key = "hero") {
                 ScrollRevealItem(listState = listState, itemIndex = 1) {
                     PageWidth {
-                        HeroSection(
-                            copy = copy,
-                            languageCode = languageCode,
-                            onOpenLink = uriHandler::openUri,
-                        )
+                    HeroSection(
+                        copy = copy,
+                        languageCode = languageCode,
+                        onOpenLink = uriHandler::openUri,
+                        onDownloadCv = { onAction(PortfolioContract.Action.DownloadCv) },
+                    )
                     }
                 }
             }
@@ -309,6 +310,7 @@ private fun HeroSection(
     copy: PortfolioCopy,
     languageCode: String,
     onOpenLink: (String) -> Unit,
+    onDownloadCv: () -> Unit,
 ) {
     BoxWithConstraints(
         modifier = Modifier
@@ -321,7 +323,7 @@ private fun HeroSection(
         if (stacked) {
             Column(verticalArrangement = Arrangement.spacedBy(24.dp)) {
                 PortraitBlock(copy.portraitCaption, width = portraitWidth)
-                HeroCopy(copy = copy, languageCode = languageCode, onOpenLink = onOpenLink, compact = compactHero)
+                HeroCopy(copy = copy, languageCode = languageCode, onOpenLink = onOpenLink, onDownloadCv = onDownloadCv, compact = compactHero)
             }
         } else {
             Row(
@@ -332,6 +334,7 @@ private fun HeroSection(
                     copy = copy,
                     languageCode = languageCode,
                     onOpenLink = onOpenLink,
+                    onDownloadCv = onDownloadCv,
                     modifier = Modifier.weight(1.2f),
                 )
                 PortraitBlock(
@@ -350,6 +353,7 @@ private fun HeroCopy(
     copy: PortfolioCopy,
     languageCode: String,
     onOpenLink: (String) -> Unit,
+    onDownloadCv: () -> Unit,
     modifier: Modifier = Modifier,
     compact: Boolean = false,
 ) {
@@ -402,7 +406,7 @@ private fun HeroCopy(
                 SocialLinkChip("GitHub", SocialIcons.GitHub, onClick = { onOpenLink(Links.GitHub) })
                 SocialLinkChip("Medium", SocialIcons.Medium, onClick = { onOpenLink(Links.Medium) })
                 SocialLinkChip("Email", SocialIcons.Email, onClick = { onOpenLink(Links.Email) })
-                SocialLinkChip(copy.downloadCv, SocialIcons.Cv, onClick = { onOpenLink(Links.Cv) })
+                SocialLinkChip(copy.downloadCv, SocialIcons.Cv, onClick = onDownloadCv)
             }
         }
     }
@@ -586,7 +590,12 @@ private fun ExperienceTimeline(
     PortfolioCard(modifier = modifier) {
         OverlineText(copy.expOverline, languageCode = languageCode)
         SectionTitle(copy.expTitle, modifier = Modifier.padding(top = 6.dp))
-        TimelineEntry(copy.j1When, "Eteration Bilişim A.Ş.", copy.j1Role, listOf(copy.j1a, copy.j1b, copy.j1c, copy.j1d))
+        TimelineEntry(
+            copy.j1When,
+            "Eteration Bilişim A.Ş.",
+            copy.j1Role,
+            listOf(copy.j1a, copy.j1b, copy.j1c, copy.j1d, copy.j1e, copy.j1f),
+        )
         TimelineEntry(copy.j2When, "Nuevo Softwarehouse", copy.j2Role, listOf(copy.j2a, copy.j2b, copy.j2c))
         TimelineEntry(copy.j3When, copy.j3Company, copy.j3Role, listOf(copy.j3a))
     }
@@ -675,7 +684,7 @@ private fun SideColumn(
         PortfolioCard {
             OverlineText(copy.eduOverline, languageCode = languageCode)
             Text(
-                text = "Osmaniye Korkut Ata University",
+                text = copy.eduUniversity,
                 style = MaterialTheme.typography.headlineMedium,
                 modifier = Modifier.padding(top = 6.dp),
             )

@@ -12,5 +12,7 @@ object PortfolioContract {
 
     sealed interface Action {
         data class LanguageSelected(val language: AppLanguage) : Action
+
+        data object DownloadCv : Action
     }
 }

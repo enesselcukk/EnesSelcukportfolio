@@ -1,7 +1,6 @@
 package com.example.enesportfolio.core.model
 
 object Links {
-    const val Cv = "enes-selcuk-cv.pdf"
     const val LinkedIn = "https://www.linkedin.com/in/enes-sel%C3%A7uk-26a9ba18a/"
     const val GitHub = "https://github.com/enesselcukk"
     const val Medium = "https://medium.com/@enesselcuk"
