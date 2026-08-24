@@ -50,8 +50,10 @@ Add these in GitHub → **Settings** → **Secrets and variables** → **Actions
 After the first successful deploy, Cloudflare gives you a URL like:
 
 ```text
-https://enesportfolio.pages.dev
+https://enesselcukportfolio.pages.dev
 ```
+
+The `--project-name` in the GitHub workflow must match the Cloudflare Pages project name exactly.
 
 ## Step 3 — Buy the domain
 
@@ -79,7 +81,7 @@ If DNS stays at Squarespace temporarily:
 
 | Type | Name | Target |
 |---|---|---|
-| CNAME | `www` | `enesportfolio.pages.dev` |
+| CNAME | `www` | `enesselcukportfolio.pages.dev` |
 | ALIAS / ANAME / forwarding | `@` | Cloudflare Pages target shown in the dashboard |
 
 Squarespace apex (`@`) support varies. Moving nameservers to Cloudflare is the most reliable option.

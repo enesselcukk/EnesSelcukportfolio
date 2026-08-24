@@ -32,9 +32,13 @@ jobs:
       - name: Build Cloudflare Pages bundle
         run: ./gradlew :app:webApp:packageCloudflarePages --no-daemon
 
+      - name: Verify build output
+        run: ls -la app/webApp/build/cloudflare-pages
+
       - name: Publish to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy app/webApp/build/cloudflare-pages --project-name=enesportfolio --branch=main
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          command: pages deploy app/webApp/build/cloudflare-pages --project-name=enesselcukportfolio --branch=main
