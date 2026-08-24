@@ -19,6 +19,7 @@ internal object PortfolioCopyData {
     heroLede =
       "I bring 5+ years of experience delivering production Android applications and secure banking SDKs with Kotlin and Java. Jetpack Compose has been part of my day-to-day work at Garanti BBVA; I have also contributed to Migros İK, Hürriyet, and Havaş. I am professionally engaged in Kotlin Multiplatform, with Compose Multiplatform explored through personal projects.",
     downloadCv = "Download CV",
+    viewPortfolio = "Portfolio",
     portraitCaption = "İstanbul, Türkiye",
     aboutTitle = "Expertise",
     aboutBody =
@@ -89,6 +90,7 @@ internal object PortfolioCopyData {
     heroLede =
       "Beş yılı aşkın profesyonel deneyimle Kotlin ve Java kullanarak production Android uygulamaları ve secure banking SDK'ları geliştiriyorum. Jetpack Compose'u günlük iş akışımda yalnızca Garanti BBVA kapsamında aktif olarak kullandım; Migros İK, Hürriyet ve Havaş uygulamalarında da geliştirme süreçlerine katkı sağladım. Kotlin Multiplatform alanıyla profesyonel olarak ilgileniyorum; Compose Multiplatform çalışmalarım kişisel projelerimde ilerliyor.",
     downloadCv = "CV'yi indir",
+    viewPortfolio = "Portfolyo",
     portraitCaption = "İstanbul, Türkiye",
     aboutTitle = "Uzmanlık",
     aboutBody =

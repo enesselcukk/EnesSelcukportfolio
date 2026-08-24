@@ -9,6 +9,7 @@ data class PortfolioCopy(
     val heroRole: String,
     val heroLede: String,
     val downloadCv: String,
+    val viewPortfolio: String,
     val portraitCaption: String,
     val aboutTitle: String,
     val aboutBody: String,
