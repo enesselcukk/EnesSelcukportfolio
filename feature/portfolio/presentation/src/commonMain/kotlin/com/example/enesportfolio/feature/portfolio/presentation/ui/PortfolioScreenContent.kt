@@ -110,7 +110,7 @@ internal fun PortfolioScreenContent(
             modifier = Modifier.fillMaxSize(),
             contentPadding = PaddingValues(bottom = 64.dp),
         ) {
-            item {
+            item(key = "nav") {
                 PageWidth {
                     TopNav(
                         copy = copy,
@@ -126,42 +126,54 @@ internal fun PortfolioScreenContent(
                     )
                 }
             }
-            item {
-                PageWidth {
-                    HeroSection(
-                        copy = copy,
-                        languageCode = languageCode,
-                        onOpenLink = uriHandler::openUri,
-                    )
+            item(key = "hero") {
+                ScrollRevealItem(listState = listState, itemIndex = 1) {
+                    PageWidth {
+                        HeroSection(
+                            copy = copy,
+                            languageCode = languageCode,
+                            onOpenLink = uriHandler::openUri,
+                        )
+                    }
                 }
             }
-            item {
-                PageWidth { IntroSection(copy = copy, languageCode = languageCode) }
-            }
-            item {
-                PageWidth { ExperienceSection(content = content, languageCode = languageCode) }
-            }
-            item {
-                PageWidth {
-                    WorkSection(
-                        content = content,
-                        languageCode = languageCode,
-                        onOpenLink = uriHandler::openUri,
-                    )
+            item(key = "intro") {
+                ScrollRevealItem(listState = listState, itemIndex = 2) {
+                    PageWidth { IntroSection(copy = copy, languageCode = languageCode) }
                 }
             }
-            item {
-                PageWidth {
-                    NotesSection(
-                        copy = copy,
-                        notes = content.notes,
-                        languageCode = languageCode,
-                        onOpenLink = uriHandler::openUri,
-                    )
+            item(key = "experience") {
+                ScrollRevealItem(listState = listState, itemIndex = 3) {
+                    PageWidth { ExperienceSection(content = content, languageCode = languageCode) }
                 }
             }
-            item {
-                PageWidth { FooterSection(copy = copy, onOpenLink = uriHandler::openUri) }
+            item(key = "work") {
+                ScrollRevealItem(listState = listState, itemIndex = 4) {
+                    PageWidth {
+                        WorkSection(
+                            content = content,
+                            languageCode = languageCode,
+                            onOpenLink = uriHandler::openUri,
+                        )
+                    }
+                }
+            }
+            item(key = "notes") {
+                ScrollRevealItem(listState = listState, itemIndex = 5) {
+                    PageWidth {
+                        NotesSection(
+                            copy = copy,
+                            notes = content.notes,
+                            languageCode = languageCode,
+                            onOpenLink = uriHandler::openUri,
+                        )
+                    }
+                }
+            }
+            item(key = "footer") {
+                ScrollRevealItem(listState = listState, itemIndex = 6) {
+                    PageWidth { FooterSection(copy = copy, onOpenLink = uriHandler::openUri) }
+                }
             }
         }
     }
