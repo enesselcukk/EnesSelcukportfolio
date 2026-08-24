@@ -37,3 +37,43 @@ kotlin {
         }
     }
 }
+
+val cloudflarePagesDir = layout.buildDirectory.dir("cloudflare-pages")
+
+tasks.register<Copy>("packageCloudflarePages") {
+    group = "distribution"
+    description = "Packages the wasm web app for Cloudflare Pages deployment."
+
+    dependsOn("wasmJsBrowserProductionWebpack")
+
+    into(cloudflarePagesDir)
+
+    from(layout.buildDirectory.dir("kotlin-webpack/wasmJs/productionExecutable")) {
+        exclude("*.map")
+    }
+
+    from(layout.buildDirectory.dir("processedResources/wasmJs/main")) {
+        include("index.html", "styles.css")
+    }
+
+    from(
+        layout.buildDirectory.dir(
+            "kotlin-multiplatform-resources/aggregated-resources/wasmJs/composeResources",
+        ),
+    ) {
+        into("composeResources")
+    }
+
+    doLast {
+        val headersFile = destinationDir.resolve("_headers")
+        headersFile.writeText(
+            """
+            /*
+              X-Content-Type-Options: nosniff
+
+            /*.wasm
+              Content-Type: application/wasm
+            """.trimIndent() + "\n",
+        )
+    }
+}
