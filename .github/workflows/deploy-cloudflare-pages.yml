@@ -36,9 +36,12 @@ jobs:
         run: ls -la app/webApp/build/cloudflare-pages
 
       - name: Publish to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: enesselcukportfolio
+          directory: app/webApp/build/cloudflare-pages
+          branch: main
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          command: pages deploy app/webApp/build/cloudflare-pages --project-name=enesselcukportfolio --branch=main
+          wranglerVersion: "3"
