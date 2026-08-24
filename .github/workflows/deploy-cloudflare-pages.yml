@@ -41,6 +41,9 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           set -euxo pipefail
+          if ! npx --yes wrangler@3 pages project list | grep -q "enesselcukportfolio"; then
+            npx --yes wrangler@3 pages project create enesselcukportfolio --production-branch=main
+          fi
           npx --yes wrangler@3 pages deploy app/webApp/build/cloudflare-pages \
             --project-name=enesselcukportfolio \
             --branch=main \

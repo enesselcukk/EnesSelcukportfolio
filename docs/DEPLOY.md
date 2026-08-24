@@ -26,17 +26,13 @@ It contains `index.html`, `styles.css`, `webApp.js`, `.wasm` files, and Compose 
 ## Step 2 — Create Cloudflare account and Pages project
 
 1. Sign in at [dash.cloudflare.com](https://dash.cloudflare.com).
-2. Open **Workers & Pages** → **Create application** → **Pages** → **Connect to Git**.
-3. Select the GitHub repository.
-4. Use these build settings:
+2. Open **Workers & Pages** → **Create application** → **Pages** → **Upload assets** (Direct Upload).
+3. Project name: `enesselcukportfolio`.
+4. Upload any placeholder file once, or skip if the UI allows creating an empty project.
 
-| Setting | Value |
-|---|---|
-| Production branch | `main` |
-| Build command | `./gradlew :app:webApp:packageCloudflarePages` |
-| Build output directory | `app/webApp/build/cloudflare-pages` |
+Important: do **not** use **Connect to Git** on Cloudflare when deploying with GitHub Actions. That flow often creates a **Worker** project instead of a **Pages** project, and `wrangler pages deploy` then fails with `Project not found [8000007]`.
 
-If you prefer GitHub Actions instead of Cloudflare's native Git build, skip the build settings and use the workflow in `.github/workflows/deploy-cloudflare-pages.yml`.
+Use GitHub Actions (`.github/workflows/deploy-cloudflare-pages.yml`) as the only deploy path.
 
 ### GitHub Actions secrets
 
