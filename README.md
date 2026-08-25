@@ -4,13 +4,12 @@ Personal portfolio site for Enes Selçuk, Android developer focused on Jetpack C
 
 **Live site:** [enesselcuk.com](https://enesselcuk.com)
 
-KMP project with Compose Multiplatform UI, currently shipped as Web/Wasm. Shared modules cover experience, apps, notes, and a downloadable CV. Deployed to Cloudflare Pages via GitHub Actions.
+Compose Multiplatform (CMP) portfolio, shipped as Web/Wasm. Shared modules cover experience, apps, notes, and a downloadable CV. Deployed to Cloudflare Pages via GitHub Actions.
 
 ## Tech stack
 
-- Kotlin Multiplatform
 - Compose Multiplatform
-- Kotlin/Wasm (web)
+- Kotlin/Wasm
 - Koin, Navigation 3
 
 ## Run locally
