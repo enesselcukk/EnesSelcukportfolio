@@ -483,12 +483,12 @@ private fun IntroSection(copy: PortfolioCopy, languageCode: String) {
         val stacked = maxWidth < 860.dp
         if (stacked) {
             Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                AboutCard(copy)
+                AboutCard(copy, languageCode = languageCode)
                 NowCard(copy, languageCode = languageCode)
             }
         } else {
             Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                AboutCard(copy, modifier = Modifier.weight(1.35f))
+                AboutCard(copy, languageCode = languageCode, modifier = Modifier.weight(1.35f))
                 NowCard(copy, languageCode = languageCode, modifier = Modifier.weight(0.8f))
             }
         }
@@ -496,13 +496,72 @@ private fun IntroSection(copy: PortfolioCopy, languageCode: String) {
 }
 
 @Composable
-private fun AboutCard(copy: PortfolioCopy, modifier: Modifier = Modifier) {
+private fun AboutCard(
+    copy: PortfolioCopy,
+    languageCode: String,
+    modifier: Modifier = Modifier,
+) {
     PortfolioCard(modifier = modifier) {
         SectionTitle(copy.aboutTitle)
         Text(
-            text = copy.aboutBody,
+            text = copy.aboutLead,
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.padding(top = 12.dp),
+        )
+        LabeledFacts(
+            items = listOf(
+                copy.aboutArchLabel to copy.aboutArch,
+                copy.aboutSecLabel to copy.aboutSec,
+                copy.aboutShipLabel to copy.aboutShip,
+            ),
+            languageCode = languageCode,
+            modifier = Modifier.padding(top = 18.dp),
+        )
+    }
+}
+
+@Composable
+private fun LabeledFacts(
+    items: List<Pair<String, String>>,
+    languageCode: String,
+    modifier: Modifier = Modifier,
+) {
+    BoxWithConstraints(modifier = modifier.fillMaxWidth()) {
+        if (maxWidth < 560.dp) {
+            Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                items.forEach { (label, body) ->
+                    ExpertiseItem(label = label, body = body, languageCode = languageCode)
+                }
+            }
+        } else {
+            Row(horizontalArrangement = Arrangement.spacedBy(20.dp)) {
+                items.forEach { (label, body) ->
+                    ExpertiseItem(
+                        label = label,
+                        body = body,
+                        languageCode = languageCode,
+                        modifier = Modifier.weight(1f),
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun ExpertiseItem(
+    label: String,
+    body: String,
+    languageCode: String,
+    modifier: Modifier = Modifier,
+) {
+    Column(modifier = modifier) {
+        OverlineText(label, languageCode = languageCode)
+        Text(
+            text = body,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.88f),
+            modifier = Modifier.padding(top = 6.dp),
         )
     }
 }
