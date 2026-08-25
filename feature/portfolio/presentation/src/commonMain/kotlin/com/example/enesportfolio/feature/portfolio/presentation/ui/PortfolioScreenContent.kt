@@ -404,9 +404,9 @@ private fun HeroCopy(
             ) {
                 SocialLinkChip("LinkedIn", SocialIcons.LinkedIn, onClick = { onOpenLink(Links.LinkedIn) })
                 SocialLinkChip("GitHub", SocialIcons.GitHub, onClick = { onOpenLink(Links.GitHub) })
+                SocialLinkChip("Medium", SocialIcons.Medium, onClick = { onOpenLink(Links.Medium) })
                 SocialLinkChip("Email", SocialIcons.Email, onClick = { onOpenLink(Links.Email) })
                 SocialLinkChip(copy.downloadCv, SocialIcons.Cv, onClick = onDownloadCv)
-                SocialLinkChip(copy.viewPortfolio, SocialIcons.Medium, onClick = { onOpenLink(Links.Medium) })
             }
         }
     }

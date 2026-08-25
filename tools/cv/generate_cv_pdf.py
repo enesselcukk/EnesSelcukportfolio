@@ -179,7 +179,8 @@ def main():
             '<a href="mailto:enesselcu25@gmail.com" color="#1a56db">enesselcu25@gmail.com</a> | '
             '<a href="https://github.com/enesselcukk" color="#1a56db">GitHub</a> | '
             '<a href="https://www.linkedin.com/in/enes-selçuk-26a9ba18a/" color="#1a56db">LinkedIn</a> | '
-            '<a href="https://medium.com/@enesselcuk" color="#1a56db">Medium</a>',
+            '<a href="https://medium.com/@enesselcuk" color="#1a56db">Medium</a> | '
+            '<a href="https://enesselcuk.com" color="#1a56db">Portfolio</a>',
             styles["contact"],
         )
     )
