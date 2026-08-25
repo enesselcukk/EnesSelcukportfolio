@@ -48,6 +48,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -741,20 +742,20 @@ private fun PersonalProjectsSection(
 
     BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
         val stacked = maxWidth < 860.dp
-        Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
             if (leadingProjects.isNotEmpty()) {
                 if (stacked) {
                     leadingProjects.forEach { project ->
-                        ProjectCard(
+                        PersonalProjectCard(
                             project = project,
                             onClick = { onOpenLink(project.url) },
                             modifier = Modifier.fillMaxWidth(),
                         )
                     }
                 } else {
-                    Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                    Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                         leadingProjects.forEach { project ->
-                            ProjectCard(
+                            PersonalProjectCard(
                                 project = project,
                                 onClick = { onOpenLink(project.url) },
                                 modifier = Modifier.weight(1f),
@@ -764,7 +765,7 @@ private fun PersonalProjectsSection(
                 }
             }
             if (stacked) {
-                ProjectCard(
+                PersonalProjectCard(
                     project = portfolioProject,
                     onClick = { onOpenLink(portfolioProject.url) },
                     modifier = Modifier.fillMaxWidth(),
@@ -775,8 +776,8 @@ private fun PersonalProjectsSection(
                     modifier = Modifier.fillMaxWidth(),
                 )
             } else {
-                Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                    ProjectCard(
+                Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    PersonalProjectCard(
                         project = portfolioProject,
                         onClick = { onOpenLink(portfolioProject.url) },
                         modifier = Modifier.weight(1f),
@@ -802,11 +803,11 @@ private fun ProjectGrid(
         val stacked = maxWidth < 860.dp
         val columnCount = if (stacked) 1 else columns
         val rows = projects.chunked(columnCount)
-        Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
             rows.forEach { rowProjects ->
-                Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     rowProjects.forEach { project ->
-                        ProjectCard(
+                        PersonalProjectCard(
                             project = project,
                             onClick = { onOpenLink(project.url) },
                             modifier = Modifier.weight(1f),
@@ -817,76 +818,6 @@ private fun ProjectGrid(
                     }
                 }
             }
-        }
-    }
-}
-
-@Composable
-private fun ProjectCard(
-    project: ProjectItem,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    val theme = projectCardTheme(project.index)
-    val interactionSource = remember { MutableInteractionSource() }
-    val hovered by interactionSource.collectIsHoveredAsState()
-    val lift by animateDpAsState(
-        targetValue = if (hovered) (-4).dp else 0.dp,
-        animationSpec = tween(durationMillis = 250),
-        label = "projectLift",
-    )
-    val shape = RoundedCornerShape(22.dp)
-    Column(
-        modifier = modifier
-            .offset(y = lift)
-            .clip(shape)
-            .background(if (hovered) theme.surfaceHover else theme.surface)
-            .border(
-                width = 1.dp,
-                color = if (hovered) theme.borderHover else theme.border,
-                shape = shape,
-            )
-            .hoverable(interactionSource)
-            .clickable(onClick = onClick),
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(3.dp)
-                .background(theme.accent.copy(alpha = if (hovered) 0.92f else 0.72f)),
-        )
-        Column(modifier = Modifier.padding(22.dp)) {
-            Text(
-                text = project.index,
-                style = MaterialTheme.typography.headlineMedium.copy(fontSize = 18.4.sp),
-                color = theme.accent,
-            )
-            Text(
-                text = project.title,
-                style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier.padding(top = 11.dp),
-            )
-            Text(
-                text = project.description,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.88f),
-                modifier = Modifier.padding(top = 8.dp),
-            )
-            if (project.tags.isNotEmpty()) {
-                ChipRow(
-                    chips = project.tags,
-                    modifier = Modifier.padding(top = 12.dp),
-                    chipBackground = theme.chipBackground,
-                    chipBorder = theme.chipBorder,
-                    chipText = theme.chipText,
-                )
-            }
-            Text(
-                text = project.linkLabel,
-                style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.8.sp),
-                color = theme.link,
-                modifier = Modifier.padding(top = 18.dp),
-            )
         }
     }
 }
@@ -914,8 +845,8 @@ private fun GitHubShowcaseCard(
         animationSpec = tween(durationMillis = 250),
         label = "githubCta",
     )
-    val shape = RoundedCornerShape(22.dp)
-    val screenshotShape = RoundedCornerShape(topStart = 22.dp, topEnd = 22.dp)
+    val shape = RoundedCornerShape(18.dp)
+    val screenshotShape = RoundedCornerShape(topStart = 18.dp, topEnd = 18.dp)
     val cardFill = Color(0xFF121116)
 
     Column(
@@ -936,41 +867,43 @@ private fun GitHubShowcaseCard(
             contentDescription = "GitHub profile",
             modifier = Modifier
                 .fillMaxWidth()
-                .height(260.dp)
+                .height(128.dp)
                 .clip(screenshotShape),
             contentScale = ContentScale.Crop,
             alignment = Alignment.TopCenter,
         )
-        Column(modifier = Modifier.padding(horizontal = 22.dp, vertical = 20.dp)) {
+        Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 14.dp)) {
             Text(
                 text = showcase.title,
                 style = MaterialTheme.typography.headlineMedium.copy(
                     fontFamily = PortfolioFonts.sansFamily,
                     fontWeight = FontWeight.SemiBold,
-                    fontSize = 22.sp,
-                    lineHeight = 28.sp,
+                    fontSize = 18.sp,
+                    lineHeight = 24.sp,
                 ),
             )
             Text(
                 text = showcase.badge,
                 modifier = Modifier
-                    .padding(top = 10.dp)
+                    .padding(top = 8.dp)
                     .clip(RoundedCornerShape(999.dp))
                     .background(Palette.BackgroundElevated2)
                     .border(1.dp, Palette.Line, RoundedCornerShape(999.dp))
-                    .padding(horizontal = 11.dp, vertical = 5.dp),
+                    .padding(horizontal = 10.dp, vertical = 4.dp),
                 style = MaterialTheme.typography.labelSmall,
                 color = Palette.Ink,
             )
             Text(
                 text = showcase.description,
-                style = MaterialTheme.typography.bodyMedium,
+                style = MaterialTheme.typography.bodySmall,
                 color = Palette.Muted,
-                modifier = Modifier.padding(top = 10.dp),
+                modifier = Modifier.padding(top = 8.dp),
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
             )
             ChipRow(
                 chips = showcase.tags,
-                modifier = Modifier.padding(top = 12.dp),
+                modifier = Modifier.padding(top = 8.dp),
                 chipBackground = theme.chipBackground,
                 chipBorder = theme.chipBorder,
                 chipText = theme.chipText,
@@ -978,14 +911,14 @@ private fun GitHubShowcaseCard(
             Text(
                 text = showcase.cta,
                 modifier = Modifier
-                    .padding(top = 18.dp)
+                    .padding(top = 12.dp)
                     .clip(RoundedCornerShape(999.dp))
                     .background(ctaFill)
-                    .padding(horizontal = 18.dp, vertical = 9.dp),
+                    .padding(horizontal = 14.dp, vertical = 7.dp),
                 style = MaterialTheme.typography.titleMedium.copy(
                     fontFamily = PortfolioFonts.sansFamily,
                     fontWeight = FontWeight.SemiBold,
-                    fontSize = 14.sp,
+                    fontSize = 13.sp,
                     color = Palette.Background,
                 ),
             )
