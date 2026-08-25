@@ -4,7 +4,6 @@ object Links {
     const val LinkedIn = "https://www.linkedin.com/in/enes-sel%C3%A7uk-26a9ba18a/"
     const val GitHub = "https://github.com/enesselcukk"
     const val Medium = "https://medium.com/@enesselcuk"
-    const val Portfolio = "https://enesselcuk.com"
     const val Email = "mailto:enesselcu25@gmail.com"
     const val GarantiPlay = "https://play.google.com/store/apps/details?id=com.garanti.cepsubesi"
     const val MigrosPlay = "https://play.google.com/store/apps/details?id=tr.migros.fiori"
