@@ -20,7 +20,6 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(project(":core:domain"))
-            implementation(project(":core:presentation"))
             implementation(project(":feature:portfolio:contract"))
             implementation(project(":feature:portfolio:domain"))
             implementation(project(":feature:portfolio:data"))

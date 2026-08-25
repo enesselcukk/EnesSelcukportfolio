@@ -1,8 +1,7 @@
 package com.example.enesportfolio.feature.portfolio.presentation.ui
 
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.enesportfolio.core.model.AppLanguage
-import com.example.enesportfolio.core.presentation.CoreViewModel
 import com.example.enesportfolio.feature.portfolio.contract.PortfolioContract
 import com.example.enesportfolio.feature.portfolio.domain.usecase.DownloadPortfolioCvUseCase
 import com.example.enesportfolio.feature.portfolio.domain.usecase.GetPortfolioCopyUseCase
@@ -19,7 +18,7 @@ class PortfolioViewModel(
     private val setLanguageUseCase: SetLanguageUseCase,
     private val getPortfolioCopyUseCase: GetPortfolioCopyUseCase,
     private val downloadPortfolioCvUseCase: DownloadPortfolioCvUseCase,
-) : CoreViewModel() {
+) : ViewModel() {
     private val _uiState = MutableStateFlow(PortfolioContract.UiState())
     val uiState: StateFlow<PortfolioContract.UiState> = _uiState.asStateFlow()
 
