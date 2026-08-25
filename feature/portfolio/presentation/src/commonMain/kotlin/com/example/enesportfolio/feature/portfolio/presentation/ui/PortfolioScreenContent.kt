@@ -59,6 +59,7 @@ import com.example.enesportfolio.core.designsystem.component.SocialIcons
 import com.example.enesportfolio.core.designsystem.component.SocialLinkChip
 import com.example.enesportfolio.core.designsystem.component.StatusDot
 import com.example.enesportfolio.core.designsystem.theme.Palette
+import com.example.enesportfolio.core.designsystem.theme.projectCardTheme
 import com.example.enesportfolio.core.designsystem.theme.PortfolioFonts
 import com.example.enesportfolio.core.model.AppLanguage
 import com.example.enesportfolio.core.model.Links
@@ -755,6 +756,7 @@ private fun ProjectCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val theme = projectCardTheme(project.index)
     val interactionSource = remember { MutableInteractionSource() }
     val hovered by interactionSource.collectIsHoveredAsState()
     val lift by animateDpAsState(
@@ -762,35 +764,59 @@ private fun ProjectCard(
         animationSpec = tween(durationMillis = 250),
         label = "projectLift",
     )
-    PortfolioCard(
+    val shape = RoundedCornerShape(22.dp)
+    Column(
         modifier = modifier
             .offset(y = lift)
+            .clip(shape)
+            .background(if (hovered) theme.surfaceHover else theme.surface)
+            .border(
+                width = 1.dp,
+                color = if (hovered) theme.borderHover else theme.border,
+                shape = shape,
+            )
             .hoverable(interactionSource)
             .clickable(onClick = onClick),
-        backgroundColor = if (hovered) Palette.BackgroundElevated2 else Palette.BackgroundElevated,
-        borderColor = if (hovered) Palette.Violet.copy(alpha = 0.4f) else Palette.Line,
     ) {
-        Text(
-            text = project.index,
-            style = MaterialTheme.typography.headlineMedium.copy(fontSize = 18.4.sp),
-            color = Palette.Gold,
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(3.dp)
+                .background(theme.accent.copy(alpha = if (hovered) 0.92f else 0.72f)),
         )
-        Text(
-            text = project.title,
-            style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier.padding(top = 11.dp),
-        )
-        Text(
-            text = project.description,
-            style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier.padding(top = 8.dp),
-        )
-        Text(
-            text = project.linkLabel,
-            style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.8.sp),
-            color = Palette.Mint,
-            modifier = Modifier.padding(top = 18.dp),
-        )
+        Column(modifier = Modifier.padding(22.dp)) {
+            Text(
+                text = project.index,
+                style = MaterialTheme.typography.headlineMedium.copy(fontSize = 18.4.sp),
+                color = theme.accent,
+            )
+            Text(
+                text = project.title,
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.padding(top = 11.dp),
+            )
+            Text(
+                text = project.description,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.88f),
+                modifier = Modifier.padding(top = 8.dp),
+            )
+            if (project.tags.isNotEmpty()) {
+                ChipRow(
+                    chips = project.tags,
+                    modifier = Modifier.padding(top = 12.dp),
+                    chipBackground = theme.chipBackground,
+                    chipBorder = theme.chipBorder,
+                    chipText = theme.chipText,
+                )
+            }
+            Text(
+                text = project.linkLabel,
+                style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.8.sp),
+                color = theme.link,
+                modifier = Modifier.padding(top = 18.dp),
+            )
+        }
     }
 }
 

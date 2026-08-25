@@ -92,6 +92,9 @@ fun SectionTitle(
 fun ChipRow(
     chips: List<String>,
     modifier: Modifier = Modifier,
+    chipBackground: Color = Palette.ChipBackground,
+    chipBorder: Color = Palette.Line,
+    chipText: Color = Palette.Ink,
 ) {
     FlowRow(
         modifier = modifier,
@@ -103,11 +106,11 @@ fun ChipRow(
                 text = chip,
                 modifier = Modifier
                     .clip(RoundedCornerShape(999.dp))
-                    .background(Palette.ChipBackground)
-                    .border(1.dp, Palette.Line, RoundedCornerShape(999.dp))
+                    .background(chipBackground)
+                    .border(1.dp, chipBorder, RoundedCornerShape(999.dp))
                     .padding(horizontal = 11.dp, vertical = 6.dp),
                 style = MaterialTheme.typography.bodySmall,
-                color = Palette.Ink,
+                color = chipText,
             )
         }
     }

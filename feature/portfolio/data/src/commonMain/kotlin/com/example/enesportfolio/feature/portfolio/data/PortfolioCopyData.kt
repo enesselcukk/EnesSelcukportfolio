@@ -69,8 +69,12 @@ internal object PortfolioCopyData {
     openPlay = "View on Google Play",
     persOverline = "Personal",
     persTitle = "KMP / CMP",
-    projSpotter = "Compose Multiplatform application with a shared UI across platforms.",
-    projNews = "Kotlin Multiplatform news application with a shared business-logic and data layer.",
+    projSpotter =
+      "Compose Multiplatform app with shared UI across Android, iOS, and desktop. Modular features and a cohesive Material 3 design system.",
+    projNews =
+      "Kotlin Multiplatform news client with shared domain, data, and presentation layers. Network and persistence live in commonMain.",
+    projPortfolio =
+      "Personal portfolio built with Kotlin and Compose Multiplatform (web). Responsive layout, scroll-driven motion, and a shared design system.",
     openRepo = "View on GitHub",
     notesOverline = "Notes",
     notesTitle = "Writing",
@@ -141,8 +145,12 @@ internal object PortfolioCopyData {
     openPlay = "Google Play'de görüntüle",
     persOverline = "Kişisel",
     persTitle = "KMP / CMP",
-    projSpotter = "Compose Multiplatform uygulaması; platformlar arasında paylaşılan arayüz.",
-    projNews = "Kotlin Multiplatform haber uygulaması; paylaşılan iş kuralı ve veri katmanı.",
+    projSpotter =
+      "Android, iOS ve desktop için paylaşılan arayüze sahip Compose Multiplatform uygulaması. Modüler feature yapısı ve tutarlı Material 3 design system.",
+    projNews =
+      "Paylaşılan domain, data ve presentation katmanlarına sahip Kotlin Multiplatform haber uygulaması. Network ve persistence commonMain'de.",
+    projPortfolio =
+      "Kotlin ve Compose Multiplatform (web) ile geliştirilmiş kişisel portfolio. Responsive layout, scroll animasyonları ve paylaşılan design system.",
     openRepo = "GitHub'da görüntüle",
     notesOverline = "Yazılar",
     notesTitle = "Teknik yazılar",
@@ -188,8 +196,30 @@ internal object PortfolioCopyData {
       ProjectItem("05", "Renault PORT", copy.app5, Links.RenaultPlay, copy.openPlay),
     ),
     personalProjects = listOf(
-      ProjectItem("06", "Spotter", copy.projSpotter, Links.SpotterRepo, copy.openRepo),
-      ProjectItem("07", "KMPNews", copy.projNews, Links.KmpNewsRepo, copy.openRepo),
+      ProjectItem(
+        index = "06",
+        title = "Spotter",
+        description = copy.projSpotter,
+        url = Links.SpotterRepo,
+        linkLabel = copy.openRepo,
+        tags = listOf("Kotlin", "Compose Multiplatform", "Material 3", "KMP"),
+      ),
+      ProjectItem(
+        index = "07",
+        title = "KMPNews",
+        description = copy.projNews,
+        url = Links.KmpNewsRepo,
+        linkLabel = copy.openRepo,
+        tags = listOf("Kotlin", "Kotlin Multiplatform", "Coroutines", "Clean Architecture"),
+      ),
+      ProjectItem(
+        index = "08",
+        title = "CMP (WEB)",
+        description = copy.projPortfolio,
+        url = Links.PortfolioRepo,
+        linkLabel = copy.openRepo,
+        tags = listOf("Kotlin", "Compose Multiplatform", "WASM", "Gradle"),
+      ),
     ),
     notes = listOf(
       NoteItem("2026", copy.note1, Links.Note1),

@@ -59,6 +59,7 @@ data class PortfolioCopy(
     val persTitle: String,
     val projSpotter: String,
     val projNews: String,
+    val projPortfolio: String,
     val openRepo: String,
     val notesOverline: String,
     val notesTitle: String,
@@ -86,6 +87,7 @@ data class ProjectItem(
     val description: String,
     val url: String,
     val linkLabel: String,
+    val tags: List<String> = emptyList(),
 )
 
 data class PortfolioContent(
