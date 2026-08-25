@@ -327,6 +327,11 @@ def main():
             "Kotlin Multiplatform (KMP) news app with shared business logic and data layer",
             "https://github.com/enesselcukk/KMPNews",
         ),
+        (
+            "Personal Portfolio (CMP Web)",
+            "Compose Multiplatform portfolio site shipped as Web/Wasm",
+            "https://github.com/enesselcukk/EnesSelcukportfolio",
+        ),
     ]
     for name, focus, url in personal_projects:
         story.append(

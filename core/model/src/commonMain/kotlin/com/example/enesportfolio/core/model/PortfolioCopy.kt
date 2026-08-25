@@ -90,10 +90,20 @@ data class ProjectItem(
     val tags: List<String> = emptyList(),
 )
 
+data class GitHubShowcase(
+    val title: String,
+    val badge: String,
+    val description: String,
+    val cta: String,
+    val tags: List<String>,
+    val url: String,
+)
+
 data class PortfolioContent(
     val copy: PortfolioCopy,
     val skillGroups: List<SkillGroup>,
     val productionProjects: List<ProjectItem>,
     val personalProjects: List<ProjectItem>,
     val notes: List<NoteItem>,
+    val github: GitHubShowcase,
 )

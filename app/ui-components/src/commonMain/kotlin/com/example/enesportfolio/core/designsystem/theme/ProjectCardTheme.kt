@@ -58,6 +58,7 @@ private fun projectAccent(index: String): Color {
         "06" -> scheme.primary
         "07" -> accents.sage
         "08" -> scheme.secondary
+        "09" -> accents.sky
         else -> scheme.tertiary
     }
 }

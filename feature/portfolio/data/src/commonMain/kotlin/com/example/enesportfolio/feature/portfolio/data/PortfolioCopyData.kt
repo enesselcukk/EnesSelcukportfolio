@@ -1,6 +1,7 @@
 package com.example.enesportfolio.feature.portfolio.data
 
 import com.example.enesportfolio.core.model.AppLanguage
+import com.example.enesportfolio.core.model.GitHubShowcase
 import com.example.enesportfolio.core.model.Links
 import com.example.enesportfolio.core.model.NoteItem
 import com.example.enesportfolio.core.model.PortfolioContent
@@ -226,6 +227,39 @@ internal object PortfolioCopyData {
       NoteItem("2026", copy.note2, Links.Note2),
       NoteItem(copy.noteMoreWhen, copy.note3, Links.Note3),
     ),
+    github = githubShowcase(language),
   )
   }
+
+  private fun githubShowcase(language: AppLanguage): GitHubShowcase {
+    val localized = when (language) {
+      AppLanguage.EN -> GitHubShowcaseCopy(
+        title = "More on GitHub",
+        badge = "Public repositories",
+        description = "KMP/CMP apps, Android samples, and personal project repos.",
+        cta = "Open GitHub",
+      )
+      AppLanguage.TR -> GitHubShowcaseCopy(
+        title = "GitHub'da daha fazlası",
+        badge = "Açık repolar",
+        description = "KMP/CMP uygulamaları, Android örnekleri ve kişisel proje repoları.",
+        cta = "GitHub'ı aç",
+      )
+    }
+    return GitHubShowcase(
+      title = localized.title,
+      badge = localized.badge,
+      description = localized.description,
+      cta = localized.cta,
+      tags = listOf("Kotlin", "Compose Multiplatform", "KMP", "Gradle", "Android"),
+      url = Links.GitHub,
+    )
+  }
+
+  private data class GitHubShowcaseCopy(
+    val title: String,
+    val badge: String,
+    val description: String,
+    val cta: String,
+  )
 }
