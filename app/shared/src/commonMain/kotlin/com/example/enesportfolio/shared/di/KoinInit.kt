@@ -2,7 +2,6 @@ package com.example.enesportfolio.shared.di
 
 import com.example.enesportfolio.core.datastore.DefaultLanguageSettingsRepository
 import com.example.enesportfolio.core.datastore.LanguageSettingsRepository
-import com.example.enesportfolio.core.navigation.navigationModule
 import com.example.enesportfolio.feature.portfolio.data.di.portfolioDataModule
 import com.example.enesportfolio.feature.portfolio.domain.di.portfolioDomainModule
 import com.example.enesportfolio.feature.portfolio.presentation.di.portfolioPresentationModule
@@ -17,7 +16,6 @@ val appModule = module {
 
 private val sharedModules = listOf(
     appModule,
-    navigationModule,
     portfolioDataModule,
     portfolioDomainModule,
     portfolioPresentationModule,

@@ -10,7 +10,7 @@ Compose Multiplatform (CMP) portfolio, shipped as Web/Wasm. Shared modules cover
 
 - Compose Multiplatform
 - Kotlin/Wasm
-- Koin, Navigation 3
+- Koin
 
 ## Run locally
 

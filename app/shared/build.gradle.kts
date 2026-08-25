@@ -17,11 +17,9 @@ kotlin {
             implementation(project(":app:ui-components"))
             implementation(project(":core:model"))
             implementation(project(":core:domain"))
-            implementation(project(":core:navigation"))
             implementation(project(":core:datastore"))
             implementation(project(":feature:portfolio:data"))
             implementation(project(":feature:portfolio:domain"))
-            implementation(project(":feature:portfolio:contract"))
             implementation(project(":feature:portfolio:presentation"))
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)
@@ -32,7 +30,6 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
-            implementation(libs.navigation3.ui)
         }
     }
 }
