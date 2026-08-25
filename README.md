@@ -1,6 +1,6 @@
 # Enes Selçuk — Portfolio
 
-Personal portfolio site for Enes Selçuk, Android developer focused on Jetpack Compose and Kotlin Multiplatform.
+Personal portfolio site for Enes Selçuk, Android developer focused on Jetpack Compose and Compose Multiplatform.
 
 **Live site:** [enesselcuk.com](https://enesselcuk.com)
 
@@ -17,9 +17,3 @@ Compose Multiplatform (CMP) portfolio, shipped as Web/Wasm. Shared modules cover
 ```bash
 ./gradlew :app:webApp:wasmJsBrowserDevelopmentRun
 ```
-
-Then open the URL printed in the terminal (usually `http://127.0.0.1:8080`).
-
-## Deploy
-
-See [docs/DEPLOY.md](docs/DEPLOY.md) for Cloudflare Pages setup.
