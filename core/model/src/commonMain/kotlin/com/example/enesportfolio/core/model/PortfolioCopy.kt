@@ -54,6 +54,7 @@ data class PortfolioCopy(
     val app3: String,
     val app4: String,
     val app5: String,
+    val app6: String,
     val openPlay: String,
     val persOverline: String,
     val persTitle: String,

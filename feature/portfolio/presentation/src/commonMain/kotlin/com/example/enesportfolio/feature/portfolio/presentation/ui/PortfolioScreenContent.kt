@@ -832,7 +832,7 @@ private fun GitHubShowcaseCard(
     onOpen: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val theme = projectCardTheme("09")
+    val theme = projectCardTheme("10")
     val interactionSource = remember { MutableInteractionSource() }
     val hovered by interactionSource.collectIsHoveredAsState()
     val lift by animateDpAsState(

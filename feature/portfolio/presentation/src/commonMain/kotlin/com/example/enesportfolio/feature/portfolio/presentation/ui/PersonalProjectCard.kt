@@ -63,6 +63,10 @@ import com.example.enesportfolio.feature.portfolio.presentation.generated.resour
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.hurriyet_2
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.hurriyet_3
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.hurriyet_icon
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.ismer_1
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.ismer_2
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.ismer_3
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.ismer_icon
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.kmpnews_android
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.kmpnews_desktop
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.kmpnews_ios
@@ -573,6 +577,10 @@ private fun galleryFor(index: String): PersonalProjectGallery = when (index) {
         icon = Res.drawable.renault_icon,
     )
     "06" -> PersonalProjectGallery(
+        phones = listOf(Res.drawable.ismer_1, Res.drawable.ismer_2, Res.drawable.ismer_3),
+        icon = Res.drawable.ismer_icon,
+    )
+    "07" -> PersonalProjectGallery(
         phones = listOf(
             Res.drawable.spotter_home,
             Res.drawable.spotter_list,
@@ -580,11 +588,11 @@ private fun galleryFor(index: String): PersonalProjectGallery = when (index) {
             Res.drawable.spotter_nav,
         ),
     )
-    "07" -> PersonalProjectGallery(
+    "08" -> PersonalProjectGallery(
         phones = listOf(Res.drawable.kmpnews_ios, Res.drawable.kmpnews_android),
         wides = listOf(Res.drawable.kmpnews_web, Res.drawable.kmpnews_desktop),
     )
-    "08" -> PersonalProjectGallery(
+    "09" -> PersonalProjectGallery(
         wides = listOf(Res.drawable.portfolio_github, Res.drawable.github_profile),
     )
     else -> PersonalProjectGallery()

@@ -10,6 +10,7 @@ object Links {
     const val HurriyetPlay = "https://play.google.com/store/apps/details?id=hurriyet.mobil.android"
     const val HavasPlay = "https://play.google.com/store/apps/details?id=com.havas.mobile"
     const val RenaultPlay = "https://play.google.com/store/apps/details?id=tr.com.renault.port"
+    const val IsmerPlay = "https://play.google.com/store/apps/details?id=com.ismer.portal"
     const val SpotterRepo = "https://github.com/enesselcukk/Spotter"
     const val KmpNewsRepo = "https://github.com/enesselcukk/KMPNews"
     const val PortfolioRepo = "https://github.com/enesselcukk/EnesSelcukportfolio"
