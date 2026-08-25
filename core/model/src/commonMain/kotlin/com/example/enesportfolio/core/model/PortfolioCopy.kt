@@ -26,6 +26,7 @@ data class PortfolioCopy(
     val j1d: String,
     val j1e: String,
     val j1f: String,
+    val j1g: String,
     val j2When: String,
     val j2Role: String,
     val j2a: String,

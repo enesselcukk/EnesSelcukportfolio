@@ -194,7 +194,7 @@ def main():
             "<b>Kotlin Multiplatform (KMP)</b>, and <b>Compose Multiplatform (CMP)</b>. "
             "I worked on projects for <b>Garanti BBVA</b>, <b>Migros</b>, and <b>Hürriyet</b>. "
             "I focus on <b>MVI/MVVM</b>, <b>Server-Driven UI (SDUI)</b>, mobile security "
-            "(<b>mTLS</b>, biometrics, <b>KYC/NFC</b>), and multi-module architecture. "
+            "(<b>mTLS/TLS</b>, biometrics, <b>KYC/NFC</b>), and multi-module architecture. "
             "I also work on <b>CI/CD</b> pipelines and <b>unit/UI testing</b>.",
             styles["body"],
         )
@@ -208,7 +208,7 @@ def main():
     story.append(Paragraph("Senior / Mid Android Developer | Oct 2023 – Apr 2026", styles["job_meta"]))
     eteration_bullets = [
         "Built a <b>modular SDUI SDK</b> with Jetpack Compose and MVI for <b>10+ screens/flows</b>. The backend team can update UI <b>without app store releases</b>, replacing a <b>monthly release cycle</b> with instant backend-driven changes.",
-        "Implemented <b>mTLS</b>, certificate pinning, and secure token auth for App-to-App banking. This removed unauthorized third-party access and <b>passed the security audit with zero critical findings</b> on first review.",
+        "Implemented <b>mTLS/TLS</b>, certificate pinning, and secure token auth for App-to-App banking. This removed unauthorized third-party access and <b>passed the security audit with zero critical findings</b> on first review.",
         "Developed <b>KYC SDKs</b> with NFC ID scan, OCR, and liveness check. Onboarding time dropped from <b>8 min → 3 min</b> and verification success rate reached <b>92%</b>.",
         "Built a <b>Server Push SDK</b> by integrating the third-party <b>HiveMQ</b> library with Kotlin Flow, Channels, and MVI. During ATM cash withdrawals, the mobile banking screen updates <b>automatically without manual refresh</b>. The solution was designed for <b>high performance and reliability</b> in critical banking flows.",
         "Designed <b>Individual and Corporate login</b> with custom Manual DI. Memory use went down by <b>18%</b> and login flow bugs dropped by <b>45%</b> after release.",
@@ -246,7 +246,7 @@ def main():
         ("Languages", "Kotlin, Java, C#, SQL"),
         ("Android & KMP", "Jetpack Compose, CMP, KMP, Coroutines, Flow, Room, Retrofit, Hilt, Koin, Manual DI, ViewModel, Navigation"),
         ("Architecture", "Clean Architecture, MVI, MVVM, Multi-Module, Repository Pattern, DI (Hilt / Manual / Koin), SDUI"),
-        ("Security & Hardware", "mTLS, Certificate Pinning, Biometric Auth, NFC, OCR, Liveness, QR Code"),
+        ("Security & Hardware", "mTLS/TLS, Certificate Pinning, Biometric Auth, NFC, OCR, Liveness, QR Code"),
         ("CI/CD & Tools", "Git, Jenkins, Gradle, JUnit, Espresso, Mockito, Android Studio, Firebase"),
     ]
     skill_rows = [

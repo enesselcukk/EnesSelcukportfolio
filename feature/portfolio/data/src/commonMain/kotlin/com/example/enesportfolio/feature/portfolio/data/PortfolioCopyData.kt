@@ -22,7 +22,7 @@ internal object PortfolioCopyData {
     portraitCaption = "İstanbul, Türkiye",
     aboutTitle = "Expertise",
     aboutBody =
-      "My focus spans MVI/MVVM architecture, server-driven UI (SDUI), mobile security (mTLS, biometrics, KYC/NFC), and multi-module design. For the applications I deliver, I also own CI/CD pipelines and unit and UI testing end to end.",
+      "My focus spans MVI/MVVM architecture, server-driven UI (SDUI), mobile security (mTLS/TLS, biometrics, KYC/NFC), and multi-module design. For the applications I deliver, I also own CI/CD pipelines and unit and UI testing end to end.",
     nowLabel = "Current focus",
     nowOne = "Spotter — shared UI across platforms with Compose Multiplatform (personal project)",
     nowTwo = "KMPNews — shared business logic and data layer with Kotlin Multiplatform (personal project)",
@@ -35,8 +35,10 @@ internal object PortfolioCopyData {
     j1b = "Delivered Login SDK and Approve SDK with a custom Manual DI setup for individual and corporate banking flows.",
     j1c = "Developed KYC SDKs with NFC ID scanning, OCR, and liveness checks. Onboarding time fell from 8 minutes to 3; verification success reached 92%.",
     j1d = "Built a Server Push SDK on top of a third-party library, implementing the integration end to end from vendor documentation.",
-    j1e = "Implemented mTLS, certificate pinning, and secure token authentication for app-to-app banking. The first security audit returned zero critical findings.",
+    j1e = "Implemented mTLS/TLS, certificate pinning, and secure token authentication for app-to-app banking. The first security audit returned zero critical findings.",
     j1f = "Wrote 50+ unit and Compose UI tests and set up Jenkins CI/CD. Coverage reached 80%; pipeline time dropped from 38 minutes to 14.",
+    j1g =
+      "At Eteration on Garanti BBVA projects, used GitHub Copilot and ChatGPT to increase development efficiency and improve code quality.",
     j2When = "Jun 2022 – Oct 2023",
     j2Role = "Android Developer",
     j2a = "Maintained and improved Android apps for Migros İK, Hürriyet, Havaş, OYAK, and Avivasa, serving 500K+ / 1M+ active users. Crash-free rate improved from 98.5% to 99.4%.",
@@ -92,7 +94,7 @@ internal object PortfolioCopyData {
     portraitCaption = "İstanbul, Türkiye",
     aboutTitle = "Uzmanlık",
     aboutBody =
-      "MVI/MVVM, Server-Driven UI (SDUI), mobile security (mTLS, biometrics, KYC/NFC) ve multi-module design üzerinde çalışıyorum. Teslim ettiğim uygulamalarda CI/CD pipeline kurulumu ile unit ve UI test süreçlerini uçtan uca yönetiyorum.",
+      "MVI/MVVM, Server-Driven UI (SDUI), mobile security (mTLS/TLS, biometrics, KYC/NFC) ve multi-module design üzerinde çalışıyorum. Teslim ettiğim uygulamalarda CI/CD pipeline kurulumu ile unit ve UI test süreçlerini uçtan uca yönetiyorum.",
     nowLabel = "Güncel odak",
     nowOne = "Spotter — Compose Multiplatform ile shared UI (kişisel proje)",
     nowTwo = "KMPNews — Kotlin Multiplatform ile shared business logic ve data layer (kişisel proje)",
@@ -105,8 +107,10 @@ internal object PortfolioCopyData {
     j1b = "Individual ve corporate banking flow'ları için Manual DI tabanlı Login SDK ve Approve SDK geliştirdim.",
     j1c = "NFC ID scan, OCR ve liveness kontrolü içeren KYC SDK'ları geliştirdim. Onboarding süresini 8 dakikadan 3 dakikaya indirdim; verification success rate %92'ye ulaştı.",
     j1d = "Third-party library üzerine Server Push SDK geliştirdim; vendor documentation okuyarak entegrasyonu uçtan uca implement ettim.",
-    j1e = "App-to-app banking için mTLS, certificate pinning ve secure token authentication uyguladım. İlk security audit'te critical finding çıkmadı.",
+    j1e = "App-to-app banking için mTLS/TLS, certificate pinning ve secure token authentication uyguladım. İlk security audit'te critical finding çıkmadı.",
     j1f = "50'den fazla unit ve Compose UI testi yazdım; Jenkins ile CI/CD pipeline kurdum. Test coverage %80'e çıktı, pipeline süresi 38 dakikadan 14 dakikaya düştü.",
+    j1g =
+      "Eteration bünyesinde Garanti BBVA projelerinde çalışırken GitHub Copilot ve ChatGPT kullanarak geliştirme verimliliğini artırdım ve kod kalitesini iyileştirdim.",
     j2When = "Haziran 2022 – Ekim 2023",
     j2Role = "Android Developer",
     j2a = "Migros İK, Hürriyet, Havaş, OYAK ve Avivasa uygulamalarının bakımını ve geliştirmesini yürüttüm. Uygulamalar 500 bin / 1 milyon üzeri aktif kullanıcıya hizmet veriyor; çökmesiz çalışma oranı %98,5'ten %99,4'e yükseldi.",
@@ -153,7 +157,7 @@ internal object PortfolioCopyData {
     SkillGroup("Languages", listOf("Kotlin", "Java", "C#", "SQL")),
     SkillGroup("Android & KMP", listOf("Jetpack Compose", "CMP", "KMP", "Coroutines", "Flow", "Room", "Retrofit", "Hilt", "Koin")),
     SkillGroup("Architecture", listOf("Clean Architecture", "MVI", "MVVM", "Multi-module", "SDUI")),
-    SkillGroup("Security", listOf("mTLS", "Certificate pinning", "Biometrics", "NFC", "OCR", "Liveness")),
+    SkillGroup("Security", listOf("mTLS/TLS", "Certificate pinning", "Biometrics", "NFC", "OCR", "Liveness")),
     SkillGroup("CI/CD & tests", listOf("Jenkins", "Gradle", "JUnit", "Espresso", "Mockito", "Firebase")),
   )
 

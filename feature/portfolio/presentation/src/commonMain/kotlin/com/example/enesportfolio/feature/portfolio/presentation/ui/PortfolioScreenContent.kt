@@ -594,7 +594,7 @@ private fun ExperienceTimeline(
             copy.j1When,
             "Eteration Bilişim A.Ş.",
             copy.j1Role,
-            listOf(copy.j1a, copy.j1b, copy.j1c, copy.j1d, copy.j1e, copy.j1f),
+            listOf(copy.j1a, copy.j1b, copy.j1c, copy.j1d, copy.j1e, copy.j1f, copy.j1g),
         )
         TimelineEntry(copy.j2When, "Nuevo Softwarehouse", copy.j2Role, listOf(copy.j2a, copy.j2b, copy.j2c))
         TimelineEntry(copy.j3When, copy.j3Company, copy.j3Role, listOf(copy.j3a))
