@@ -30,7 +30,7 @@ internal object PortfolioCopyData {
     aboutShipLabel = "Delivery",
     aboutShip = "CI/CD, unit and UI tests. Google Play and Huawei AppGallery.",
     nowLabel = "Current focus",
-    nowOne = "Spotter — shared UI across platforms with Compose Multiplatform (personal project)",
+    nowOne = "Spotter — shared UI on Android and iOS with Compose Multiplatform (personal project)",
     nowTwo = "KMPNews — shared business logic and data layer with Kotlin Multiplatform (personal project)",
     nowThree = "Technical writing on Android architecture and engineering practices on Medium",
     expOverline = "Experience",
@@ -83,7 +83,7 @@ internal object PortfolioCopyData {
     persOverline = "Personal",
     persTitle = "KMP / CMP",
     projSpotter =
-      "Compose Multiplatform app with shared UI across Android, iOS, and desktop. Modular features and a cohesive Material 3 design system.",
+      "Compose Multiplatform app with shared UI across Android and iOS. Modular features and a cohesive Material 3 design system.",
     projNews =
       "Kotlin Multiplatform news client with shared domain, data, and presentation layers. Network and persistence live in commonMain.",
     projPortfolio =
@@ -118,7 +118,7 @@ internal object PortfolioCopyData {
     aboutShipLabel = "Teslim",
     aboutShip = "CI/CD, unit ve UI testleri. Google Play ve Huawei AppGallery.",
     nowLabel = "Güncel odak",
-    nowOne = "Spotter — Compose Multiplatform ile Android, iOS ve masaüstünde ortak arayüz (kişisel proje)",
+    nowOne = "Spotter — Compose Multiplatform ile Android ve iOS'ta ortak arayüz (kişisel proje)",
     nowTwo = "KMPNews — Kotlin Multiplatform ile ortak iş kuralı ve veri katmanı (kişisel proje)",
     nowThree = "Medium'da Android mimarisi ve mühendislik pratikleri üzerine yazıyorum",
     expOverline = "Deneyim",
@@ -171,7 +171,7 @@ internal object PortfolioCopyData {
     persOverline = "Kişisel",
     persTitle = "KMP / CMP",
     projSpotter =
-      "Android, iOS ve masaüstü için ortak arayüzlü Compose Multiplatform uygulaması. Modüler yapı, Material 3.",
+      "Android ve iOS için ortak arayüzlü Compose Multiplatform uygulaması. Modüler yapı, Material 3.",
     projNews =
       "Ortak domain, data ve presentation katmanına sahip Kotlin Multiplatform haber uygulaması. Ağ ve veritabanı commonMain'de.",
     projPortfolio =
