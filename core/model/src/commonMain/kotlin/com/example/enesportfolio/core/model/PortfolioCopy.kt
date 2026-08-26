@@ -72,6 +72,7 @@ data class PortfolioCopy(
     val persTitle: String,
     val projSpotter: String,
     val projNews: String,
+    val projFieldFlow: String,
     val projPortfolio: String,
     val openRepo: String,
     val notesOverline: String,
@@ -103,12 +104,17 @@ data class ProjectItem(
     val tags: List<String> = emptyList(),
 )
 
+data class ShowcaseFact(
+    val label: String,
+    val body: String,
+)
+
 data class GitHubShowcase(
     val title: String,
     val badge: String,
     val description: String,
     val cta: String,
-    val tags: List<String>,
+    val facts: List<ShowcaseFact>,
     val url: String,
 )
 

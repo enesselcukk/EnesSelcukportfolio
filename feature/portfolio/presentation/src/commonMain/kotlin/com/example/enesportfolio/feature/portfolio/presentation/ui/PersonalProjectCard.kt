@@ -37,6 +37,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
@@ -54,6 +55,12 @@ import com.example.enesportfolio.feature.portfolio.presentation.generated.resour
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.garanti_2
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.garanti_3
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.garanti_icon
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.fieldflow_activation
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.fieldflow_bio
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.fieldflow_dashboard
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.fieldflow_home
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.fieldflow_map
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.fieldflow_ocr
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.github_profile
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.havas_1
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.havas_2
@@ -95,6 +102,8 @@ private val PhoneShape = RoundedCornerShape(14.dp)
 private val ShotShape = RoundedCornerShape(12.dp)
 private val BackFill = Color(0xFF101014)
 private val PreviewHeight = 128.dp
+private val ChipRowHeight = 62.dp
+private val DescriptionHeight = 44.dp
 
 private data class PersonalProjectGallery(
     val phones: List<DrawableResource> = emptyList(),
@@ -210,19 +219,32 @@ private fun PersonalProjectFront(
                 text = project.title,
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.padding(top = 6.dp),
-            )
-            Text(
-                text = project.description,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.88f),
-                modifier = Modifier.padding(top = 6.dp),
-                maxLines = 2,
+                maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
+            Box(
+                modifier = Modifier
+                    .padding(top = 6.dp)
+                    .fillMaxWidth()
+                    .height(DescriptionHeight)
+                    .clipToBounds(),
+            ) {
+                Text(
+                    text = project.description,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.88f),
+                    minLines = 2,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
             if (project.tags.isNotEmpty()) {
                 ChipRow(
                     chips = project.tags,
-                    modifier = Modifier.padding(top = 8.dp),
+                    modifier = Modifier
+                        .padding(top = 8.dp)
+                        .fillMaxWidth()
+                        .height(ChipRowHeight),
                     chipBackground = theme.chipBackground,
                     chipBorder = theme.chipBorder,
                     chipText = theme.chipText,
@@ -245,6 +267,7 @@ private fun FrontPreview(gallery: PersonalProjectGallery) {
         modifier = Modifier
             .fillMaxWidth()
             .height(PreviewHeight)
+            .clipToBounds()
             .background(Color(0xFF121116)),
         contentAlignment = Alignment.Center,
     ) {
@@ -292,7 +315,10 @@ private fun FrontPreview(gallery: PersonalProjectGallery) {
                 Image(
                     painter = painterResource(gallery.wides.first()),
                     contentDescription = null,
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .matchParentSize()
+                        .padding(horizontal = 14.dp, vertical = 10.dp)
+                        .clip(ShotShape),
                     contentScale = ContentScale.Crop,
                     alignment = Alignment.TopCenter,
                 )
@@ -593,6 +619,16 @@ private fun galleryFor(index: String): PersonalProjectGallery = when (index) {
         wides = listOf(Res.drawable.kmpnews_web, Res.drawable.kmpnews_desktop),
     )
     "09" -> PersonalProjectGallery(
+        phones = listOf(
+            Res.drawable.fieldflow_dashboard,
+            Res.drawable.fieldflow_activation,
+            Res.drawable.fieldflow_bio,
+            Res.drawable.fieldflow_home,
+            Res.drawable.fieldflow_map,
+            Res.drawable.fieldflow_ocr,
+        ),
+    )
+    "10" -> PersonalProjectGallery(
         wides = listOf(Res.drawable.portfolio_github, Res.drawable.github_profile),
     )
     else -> PersonalProjectGallery()

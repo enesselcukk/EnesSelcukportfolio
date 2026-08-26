@@ -7,6 +7,7 @@ import com.example.enesportfolio.core.model.NoteItem
 import com.example.enesportfolio.core.model.PortfolioContent
 import com.example.enesportfolio.core.model.PortfolioCopy
 import com.example.enesportfolio.core.model.ProjectItem
+import com.example.enesportfolio.core.model.ShowcaseFact
 import com.example.enesportfolio.core.model.SkillGroup
 
 internal object PortfolioCopyData {
@@ -85,9 +86,11 @@ internal object PortfolioCopyData {
     projSpotter =
       "Compose Multiplatform app with shared UI across Android and iOS. Modular features and a cohesive Material 3 design system.",
     projNews =
-      "Kotlin Multiplatform news client with shared domain, data, and presentation layers. Network and persistence live in commonMain.",
+      "Kotlin Multiplatform news client with shared domain, data, and presentation in commonMain.",
+    projFieldFlow =
+      "At-rest encryption with Room and SQLCipher. Passphrase in EncryptedSharedPreferences; AES-GCM and Android Keystore.",
     projPortfolio =
-      "Personal portfolio built with Kotlin and Compose Multiplatform (web). Responsive layout, scroll-driven motion, and a shared design system.",
+      "Personal site in Kotlin and Compose Multiplatform (web). Responsive layout and a shared design system.",
     openRepo = "View on GitHub",
     notesOverline = "Notes",
     notesTitle = "Writing",
@@ -173,9 +176,11 @@ internal object PortfolioCopyData {
     projSpotter =
       "Android ve iOS için ortak arayüzlü Compose Multiplatform uygulaması. Modüler yapı, Material 3.",
     projNews =
-      "Ortak domain, data ve presentation katmanına sahip Kotlin Multiplatform haber uygulaması. Ağ ve veritabanı commonMain'de.",
+      "Kotlin Multiplatform haber uygulaması. Domain, data ve presentation commonMain'de.",
+    projFieldFlow =
+      "Room ve SQLCipher ile at-rest encryption. Passphrase EncryptedSharedPreferences'te; AES-GCM ve Android Keystore.",
     projPortfolio =
-      "Kotlin ve Compose Multiplatform (web) ile yazılmış kişisel site. Responsive yerleşim, kaydırma animasyonları, ortak tasarım sistemi.",
+      "Kotlin ve Compose Multiplatform (web) ile kişisel site. Responsive yerleşim, ortak tasarım sistemi.",
     openRepo = "GitHub'da görüntüle",
     notesOverline = "Yazılar",
     notesTitle = "Teknik yazılar",
@@ -240,6 +245,14 @@ internal object PortfolioCopyData {
       ),
       ProjectItem(
         index = "09",
+        title = "FieldFlow",
+        description = copy.projFieldFlow,
+        url = Links.FieldFlowRepo,
+        linkLabel = copy.openRepo,
+        tags = listOf("SQLCipher", "AES-GCM", "Keystore", "EncryptedSharedPreferences"),
+      ),
+      ProjectItem(
+        index = "10",
         title = "CMP (WEB)",
         description = copy.projPortfolio,
         url = Links.PortfolioRepo,
@@ -259,16 +272,26 @@ internal object PortfolioCopyData {
   private fun githubShowcase(language: AppLanguage): GitHubShowcase {
     val localized = when (language) {
       AppLanguage.EN -> GitHubShowcaseCopy(
-        title = "More on GitHub",
-        badge = "Public repositories",
-        description = "KMP/CMP apps, Android samples, and personal project repos.",
-        cta = "Open GitHub",
+        title = "FieldFlow",
+        badge = "Personal project",
+        description = "At-rest encryption with Room and SQLCipher. Passphrase in EncryptedSharedPreferences; AES-GCM and Android Keystore.",
+        cta = "View on GitHub",
+        facts = listOf(
+          ShowcaseFact("SQLCipher", "Room database encrypted at rest."),
+          ShowcaseFact("AES-GCM", "Keystore-backed keys; EncryptedSharedPreferences for the passphrase."),
+          ShowcaseFact("Biometric", "Fingerprint and face unlock."),
+        ),
       )
       AppLanguage.TR -> GitHubShowcaseCopy(
-        title = "GitHub'da daha fazlası",
-        badge = "Açık repolar",
-        description = "KMP/CMP uygulamaları, Android örnekleri ve kişisel proje repoları.",
-        cta = "GitHub'ı aç",
+        title = "FieldFlow",
+        badge = "Kişisel proje",
+        description = "Room ve SQLCipher ile at-rest encryption. Passphrase EncryptedSharedPreferences'te; AES-GCM ve Android Keystore.",
+        cta = "GitHub'da görüntüle",
+        facts = listOf(
+          ShowcaseFact("SQLCipher", "Room veritabanı at-rest encryption."),
+          ShowcaseFact("AES-GCM", "Keystore destekli anahtar; passphrase EncryptedSharedPreferences'te."),
+          ShowcaseFact("Biometric", "Fingerprint ve face unlock."),
+        ),
       )
     }
     return GitHubShowcase(
@@ -276,8 +299,8 @@ internal object PortfolioCopyData {
       badge = localized.badge,
       description = localized.description,
       cta = localized.cta,
-      tags = listOf("Kotlin", "Compose Multiplatform", "KMP", "Gradle", "Android"),
-      url = Links.GitHub,
+      facts = localized.facts,
+      url = Links.FieldFlowRepo,
     )
   }
 
@@ -286,5 +309,6 @@ internal object PortfolioCopyData {
     val badge: String,
     val description: String,
     val cta: String,
+    val facts: List<ShowcaseFact>,
   )
 }

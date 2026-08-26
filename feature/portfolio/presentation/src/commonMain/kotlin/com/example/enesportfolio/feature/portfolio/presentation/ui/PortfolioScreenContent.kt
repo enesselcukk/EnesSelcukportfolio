@@ -1,8 +1,5 @@
 package com.example.enesportfolio.feature.portfolio.presentation.ui
 
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -64,7 +61,6 @@ import com.example.enesportfolio.core.designsystem.theme.Palette
 import com.example.enesportfolio.core.designsystem.theme.projectCardTheme
 import com.example.enesportfolio.core.designsystem.theme.PortfolioFonts
 import com.example.enesportfolio.core.model.AppLanguage
-import com.example.enesportfolio.core.model.GitHubShowcase
 import com.example.enesportfolio.core.model.Links
 import com.example.enesportfolio.core.model.NoteItem
 import com.example.enesportfolio.core.model.PortfolioContent
@@ -74,7 +70,6 @@ import com.example.enesportfolio.core.model.SkillGroup
 import com.example.enesportfolio.feature.portfolio.contract.PortfolioContract
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.Res
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.avatar
-import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.github_profile
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 
@@ -780,75 +775,7 @@ private fun WorkSection(
         ProjectGrid(content.productionProjects, onOpenLink)
         OverlineText(content.copy.persOverline, languageCode = languageCode, modifier = Modifier.padding(top = 32.dp))
         SectionTitle(content.copy.persTitle, modifier = Modifier.padding(top = 5.dp, bottom = 16.dp))
-        PersonalProjectsSection(
-            projects = content.personalProjects,
-            github = content.github,
-            onOpenLink = onOpenLink,
-        )
-    }
-}
-
-@Composable
-private fun PersonalProjectsSection(
-    projects: List<ProjectItem>,
-    github: GitHubShowcase,
-    onOpenLink: (String) -> Unit,
-) {
-    if (projects.isEmpty()) return
-
-    val leadingProjects = projects.dropLast(1)
-    val portfolioProject = projects.last()
-
-    BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
-        val stacked = maxWidth < 860.dp
-        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            if (leadingProjects.isNotEmpty()) {
-                if (stacked) {
-                    leadingProjects.forEach { project ->
-                        PersonalProjectCard(
-                            project = project,
-                            onClick = { onOpenLink(project.url) },
-                            modifier = Modifier.fillMaxWidth(),
-                        )
-                    }
-                } else {
-                    Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                        leadingProjects.forEach { project ->
-                            PersonalProjectCard(
-                                project = project,
-                                onClick = { onOpenLink(project.url) },
-                                modifier = Modifier.weight(1f),
-                            )
-                        }
-                    }
-                }
-            }
-            if (stacked) {
-                PersonalProjectCard(
-                    project = portfolioProject,
-                    onClick = { onOpenLink(portfolioProject.url) },
-                    modifier = Modifier.fillMaxWidth(),
-                )
-                GitHubShowcaseCard(
-                    showcase = github,
-                    onOpen = { onOpenLink(github.url) },
-                    modifier = Modifier.fillMaxWidth(),
-                )
-            } else {
-                Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                    PersonalProjectCard(
-                        project = portfolioProject,
-                        onClick = { onOpenLink(portfolioProject.url) },
-                        modifier = Modifier.weight(1f),
-                    )
-                    GitHubShowcaseCard(
-                        showcase = github,
-                        onOpen = { onOpenLink(github.url) },
-                        modifier = Modifier.weight(1f),
-                    )
-                }
-            }
-        }
+        ProjectGrid(content.personalProjects, onOpenLink, columns = 2)
     }
 }
 
@@ -877,110 +804,6 @@ private fun ProjectGrid(
                     }
                 }
             }
-        }
-    }
-}
-
-private val GitHubCtaFill = Color(0xFFB7DFF0)
-private val GitHubCtaFillHover = Color(0xFFC9EAF6)
-
-@OptIn(ExperimentalLayoutApi::class)
-@Composable
-private fun GitHubShowcaseCard(
-    showcase: GitHubShowcase,
-    onOpen: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    val theme = projectCardTheme("10")
-    val interactionSource = remember { MutableInteractionSource() }
-    val hovered by interactionSource.collectIsHoveredAsState()
-    val lift by animateDpAsState(
-        targetValue = if (hovered) (-4).dp else 0.dp,
-        animationSpec = tween(durationMillis = 250),
-        label = "githubLift",
-    )
-    val ctaFill by animateColorAsState(
-        targetValue = if (hovered) GitHubCtaFillHover else GitHubCtaFill,
-        animationSpec = tween(durationMillis = 250),
-        label = "githubCta",
-    )
-    val shape = RoundedCornerShape(18.dp)
-    val screenshotShape = RoundedCornerShape(topStart = 18.dp, topEnd = 18.dp)
-    val cardFill = Color(0xFF121116)
-
-    Column(
-        modifier = modifier
-            .offset(y = lift)
-            .clip(shape)
-            .background(cardFill)
-            .border(
-                width = 1.dp,
-                color = if (hovered) theme.borderHover else Palette.Line,
-                shape = shape,
-            )
-            .hoverable(interactionSource)
-            .clickable(onClick = onOpen),
-    ) {
-        Image(
-            painter = painterResource(Res.drawable.github_profile),
-            contentDescription = "GitHub profile",
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(128.dp)
-                .clip(screenshotShape),
-            contentScale = ContentScale.Crop,
-            alignment = Alignment.TopCenter,
-        )
-        Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 14.dp)) {
-            Text(
-                text = showcase.title,
-                style = MaterialTheme.typography.headlineMedium.copy(
-                    fontFamily = PortfolioFonts.sansFamily,
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize = 18.sp,
-                    lineHeight = 24.sp,
-                ),
-            )
-            Text(
-                text = showcase.badge,
-                modifier = Modifier
-                    .padding(top = 8.dp)
-                    .clip(RoundedCornerShape(999.dp))
-                    .background(Palette.BackgroundElevated2)
-                    .border(1.dp, Palette.Line, RoundedCornerShape(999.dp))
-                    .padding(horizontal = 10.dp, vertical = 4.dp),
-                style = MaterialTheme.typography.labelSmall,
-                color = Palette.Ink,
-            )
-            Text(
-                text = showcase.description,
-                style = MaterialTheme.typography.bodySmall,
-                color = Palette.Muted,
-                modifier = Modifier.padding(top = 8.dp),
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
-            )
-            ChipRow(
-                chips = showcase.tags,
-                modifier = Modifier.padding(top = 8.dp),
-                chipBackground = theme.chipBackground,
-                chipBorder = theme.chipBorder,
-                chipText = theme.chipText,
-            )
-            Text(
-                text = showcase.cta,
-                modifier = Modifier
-                    .padding(top = 12.dp)
-                    .clip(RoundedCornerShape(999.dp))
-                    .background(ctaFill)
-                    .padding(horizontal = 14.dp, vertical = 7.dp),
-                style = MaterialTheme.typography.titleMedium.copy(
-                    fontFamily = PortfolioFonts.sansFamily,
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize = 13.sp,
-                    color = Palette.Background,
-                ),
-            )
         }
     }
 }
