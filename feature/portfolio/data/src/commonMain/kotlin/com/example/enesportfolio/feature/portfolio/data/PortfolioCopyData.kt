@@ -88,7 +88,7 @@ internal object PortfolioCopyData {
     projNews =
       "Kotlin Multiplatform news client with shared domain, data, and presentation in commonMain.",
     projFieldFlow =
-      "At-rest encryption with Room and SQLCipher. Passphrase in EncryptedSharedPreferences; AES-GCM and Android Keystore.",
+      "Multi-module Android app in Kotlin and Jetpack Compose (MVVM). Room + SQLCipher at rest; AES-GCM and Android Keystore.",
     projPortfolio =
       "Personal site in Kotlin and Compose Multiplatform (web). Responsive layout and a shared design system.",
     openRepo = "View on GitHub",
@@ -178,7 +178,7 @@ internal object PortfolioCopyData {
     projNews =
       "Kotlin Multiplatform haber uygulaması. Domain, data ve presentation commonMain'de.",
     projFieldFlow =
-      "Room ve SQLCipher ile at-rest encryption. Passphrase EncryptedSharedPreferences'te; AES-GCM ve Android Keystore.",
+      "Kotlin ve Jetpack Compose ile multi-module Android uygulaması (MVVM). Room ve SQLCipher ile at-rest encryption; AES-GCM ve Android Keystore.",
     projPortfolio =
       "Kotlin ve Compose Multiplatform (web) ile kişisel site. Responsive yerleşim, ortak tasarım sistemi.",
     openRepo = "GitHub'da görüntüle",
@@ -249,7 +249,7 @@ internal object PortfolioCopyData {
         description = copy.projFieldFlow,
         url = Links.FieldFlowRepo,
         linkLabel = copy.openRepo,
-        tags = listOf("SQLCipher", "AES-GCM", "Keystore", "EncryptedSharedPreferences"),
+        tags = listOf("Kotlin", "Jetpack Compose", "Multi-module", "SQLCipher"),
       ),
       ProjectItem(
         index = "10",
@@ -274,7 +274,7 @@ internal object PortfolioCopyData {
       AppLanguage.EN -> GitHubShowcaseCopy(
         title = "FieldFlow",
         badge = "Personal project",
-        description = "At-rest encryption with Room and SQLCipher. Passphrase in EncryptedSharedPreferences; AES-GCM and Android Keystore.",
+        description = "Multi-module Android app in Kotlin and Jetpack Compose (MVVM). Room + SQLCipher at rest; AES-GCM and Android Keystore.",
         cta = "View on GitHub",
         facts = listOf(
           ShowcaseFact("SQLCipher", "Room database encrypted at rest."),
@@ -285,7 +285,7 @@ internal object PortfolioCopyData {
       AppLanguage.TR -> GitHubShowcaseCopy(
         title = "FieldFlow",
         badge = "Kişisel proje",
-        description = "Room ve SQLCipher ile at-rest encryption. Passphrase EncryptedSharedPreferences'te; AES-GCM ve Android Keystore.",
+        description = "Kotlin ve Jetpack Compose ile multi-module Android uygulaması (MVVM). Room ve SQLCipher ile at-rest encryption; AES-GCM ve Android Keystore.",
         cta = "GitHub'da görüntüle",
         facts = listOf(
           ShowcaseFact("SQLCipher", "Room veritabanı at-rest encryption."),
