@@ -4,7 +4,7 @@ Personal portfolio site for Enes Selçuk, Android developer focused on Jetpack C
 
 **Live site:** [enesselcuk.com](https://enesselcuk.com)
 
-Single-screen Compose Multiplatform (CMP) site, shipped as Web/Wasm. Experience, apps, notes, and a downloadable CV live on one page with TR/EN. Deployed to Cloudflare Pages via GitHub Actions.
+Single-screen Compose Multiplatform (CMP) site, shipped as Web/Wasm. Experience, apps, notes, and a downloadable CV live on one page with TR/EN.
 
 ## Tech stack
 
