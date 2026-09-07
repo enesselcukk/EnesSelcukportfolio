@@ -2,6 +2,8 @@ package com.example.enesportfolio.core.model
 
 data class PortfolioCopy(
     val skip: String,
+    val copySelection: String,
+    val selectAll: String,
     val navExperience: String,
     val navWork: String,
     val navNotes: String,

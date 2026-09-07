@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.selection.DisableSelection
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -141,16 +142,18 @@ private fun HeroCopy(
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.padding(top = 14.dp).widthIn(max = 608.dp),
             )
-            FlowRow(
-                modifier = Modifier.padding(top = 26.dp),
-                horizontalArrangement = Arrangement.spacedBy(9.dp),
-                verticalArrangement = Arrangement.spacedBy(9.dp),
-            ) {
-                SocialLinkChip("LinkedIn", SocialIcons.LinkedIn, onClick = { onOpenLink(Links.LinkedIn) })
-                SocialLinkChip("GitHub", SocialIcons.GitHub, onClick = { onOpenLink(Links.GitHub) })
-                SocialLinkChip("Medium", SocialIcons.Medium, onClick = { onOpenLink(Links.Medium) })
-                SocialLinkChip("Email", SocialIcons.Email, onClick = { onOpenLink(Links.Email) })
-                SocialLinkChip(copy.downloadCv, SocialIcons.Cv, onClick = onDownloadCv)
+            DisableSelection {
+                FlowRow(
+                    modifier = Modifier.padding(top = 26.dp),
+                    horizontalArrangement = Arrangement.spacedBy(9.dp),
+                    verticalArrangement = Arrangement.spacedBy(9.dp),
+                ) {
+                    SocialLinkChip("LinkedIn", SocialIcons.LinkedIn, onClick = { onOpenLink(Links.LinkedIn) })
+                    SocialLinkChip("GitHub", SocialIcons.GitHub, onClick = { onOpenLink(Links.GitHub) })
+                    SocialLinkChip("Medium", SocialIcons.Medium, onClick = { onOpenLink(Links.Medium) })
+                    SocialLinkChip("Email", SocialIcons.Email, onClick = { onOpenLink(Links.Email) })
+                    SocialLinkChip(copy.downloadCv, SocialIcons.Cv, onClick = onDownloadCv)
+                }
             }
         }
     }

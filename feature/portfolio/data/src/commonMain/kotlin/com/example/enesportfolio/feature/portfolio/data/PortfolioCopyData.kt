@@ -13,6 +13,8 @@ import com.example.enesportfolio.core.model.SkillGroup
 internal object PortfolioCopyData {
   private val englishCopy = PortfolioCopy(
     skip = "Skip to content",
+    copySelection = "Copy",
+    selectAll = "Select all",
     navExperience = "Experience",
     navWork = "Apps",
     navNotes = "Notes",
@@ -103,6 +105,8 @@ internal object PortfolioCopyData {
 
   private val turkishCopy = PortfolioCopy(
     skip = "İçeriğe geç",
+    copySelection = "Kopyala",
+    selectAll = "Tümünü seç",
     navExperience = "Deneyim",
     navWork = "Uygulamalar",
     navNotes = "Yazılar",

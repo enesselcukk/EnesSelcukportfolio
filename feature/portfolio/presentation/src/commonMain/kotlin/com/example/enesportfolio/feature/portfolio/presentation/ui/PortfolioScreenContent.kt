@@ -9,9 +9,17 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.text.selection.DisableSelection
+import androidx.compose.foundation.text.selection.LocalTextSelectionColors
+import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.foundation.text.selection.TextSelectionColors
+import androidx.compose.foundation.text.selection.rememberSelectionState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
@@ -25,6 +33,7 @@ import com.example.enesportfolio.feature.portfolio.presentation.ui.component.Her
 import com.example.enesportfolio.feature.portfolio.presentation.ui.component.IntroSection
 import com.example.enesportfolio.feature.portfolio.presentation.ui.component.NotesSection
 import com.example.enesportfolio.feature.portfolio.presentation.ui.component.PageWidth
+import com.example.enesportfolio.feature.portfolio.presentation.ui.component.PortfolioSelectionBar
 import com.example.enesportfolio.feature.portfolio.presentation.ui.component.PortfolioTopNav
 import com.example.enesportfolio.feature.portfolio.presentation.ui.component.WorkSection
 import kotlinx.coroutines.launch
@@ -48,6 +57,19 @@ internal fun PortfolioScreenContent(
     val scope = rememberCoroutineScope()
     val sectionIndices = remember { SectionIndices }
 
+    val selectionState = rememberSelectionState()
+
+    val selectionColors = remember {
+        TextSelectionColors(
+            handleColor = Palette.Mint,
+            backgroundColor = Palette.Mint.copy(alpha = 0.28f),
+        )
+    }
+
+    LaunchedEffect(languageCode) {
+        selectionState.clear()
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -55,72 +77,86 @@ internal fun PortfolioScreenContent(
     ) {
         AtmosphereBackground(modifier = Modifier.fillMaxSize())
 
-        LazyColumn(
-            state = listState,
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(bottom = 64.dp),
-        ) {
-            item(key = "nav") {
-                PageWidth {
-                    PortfolioTopNav(
-                        copy = copy,
-                        selectedLanguage = languageCode,
-                        onLanguageSelected = { code ->
-                            onAction(PortfolioContract.Action.LanguageSelected(AppLanguage.fromCode(code)))
-                        },
-                        onNavigate = { section ->
-                            sectionIndices[section]?.let { index ->
-                                scope.launch { listState.animateScrollToItem(index) }
+        CompositionLocalProvider(LocalTextSelectionColors provides selectionColors) {
+            SelectionContainer(state = selectionState) {
+                LazyColumn(
+                    state = listState,
+                    modifier = Modifier.fillMaxSize(),
+                    contentPadding = PaddingValues(bottom = 64.dp),
+                ) {
+                    item(key = "nav") {
+                        PageWidth {
+                            DisableSelection {
+                                PortfolioTopNav(
+                                    copy = copy,
+                                    selectedLanguage = languageCode,
+                                    onLanguageSelected = { code ->
+                                        onAction(PortfolioContract.Action.LanguageSelected(AppLanguage.fromCode(code)))
+                                    },
+                                    onNavigate = { section ->
+                                        sectionIndices[section]?.let { index ->
+                                            scope.launch { listState.animateScrollToItem(index) }
+                                        }
+                                    },
+                                    modifier = Modifier.padding(top = 22.dp, bottom = 6.dp),
+                                )
                             }
-                        },
-                        modifier = Modifier.padding(top = 22.dp, bottom = 6.dp),
-                    )
+                        }
+                    }
+                    revealedItem(listState = listState, key = "hero", itemIndex = 1) {
+                        HeroSection(
+                            copy = copy,
+                            languageCode = languageCode,
+                            onOpenLink = uriHandler::openUri,
+                            onDownloadCv = { onAction(PortfolioContract.Action.DownloadCv) },
+                            modifier = Modifier.padding(top = 35.dp, bottom = 32.dp),
+                        )
+                    }
+                    revealedItem(listState = listState, key = "intro", itemIndex = 2) {
+                        IntroSection(copy = copy, languageCode = languageCode)
+                    }
+                    revealedItem(listState = listState, key = "experience", itemIndex = 3) {
+                        ExperienceSection(
+                            content = content,
+                            languageCode = languageCode,
+                            modifier = Modifier.padding(top = 16.dp),
+                        )
+                    }
+                    revealedItem(listState = listState, key = "work", itemIndex = 4) {
+                        WorkSection(
+                            content = content,
+                            languageCode = languageCode,
+                            onOpenLink = uriHandler::openUri,
+                            modifier = Modifier.padding(top = 38.dp),
+                        )
+                    }
+                    revealedItem(listState = listState, key = "notes", itemIndex = 5) {
+                        NotesSection(
+                            copy = copy,
+                            notes = content.notes,
+                            languageCode = languageCode,
+                            onOpenLink = uriHandler::openUri,
+                            modifier = Modifier.padding(top = 38.dp),
+                        )
+                    }
+                    revealedItem(listState = listState, key = "footer", itemIndex = 6) {
+                        FooterSection(
+                            copy = copy,
+                            onOpenLink = uriHandler::openUri,
+                            modifier = Modifier.padding(top = 56.dp, bottom = 64.dp),
+                        )
+                    }
                 }
             }
-            revealedItem(listState = listState, key = "hero", itemIndex = 1) {
-                HeroSection(
-                    copy = copy,
-                    languageCode = languageCode,
-                    onOpenLink = uriHandler::openUri,
-                    onDownloadCv = { onAction(PortfolioContract.Action.DownloadCv) },
-                    modifier = Modifier.padding(top = 35.dp, bottom = 32.dp),
-                )
-            }
-            revealedItem(listState = listState, key = "intro", itemIndex = 2) {
-                IntroSection(copy = copy, languageCode = languageCode)
-            }
-            revealedItem(listState = listState, key = "experience", itemIndex = 3) {
-                ExperienceSection(
-                    content = content,
-                    languageCode = languageCode,
-                    modifier = Modifier.padding(top = 16.dp),
-                )
-            }
-            revealedItem(listState = listState, key = "work", itemIndex = 4) {
-                WorkSection(
-                    content = content,
-                    languageCode = languageCode,
-                    onOpenLink = uriHandler::openUri,
-                    modifier = Modifier.padding(top = 38.dp),
-                )
-            }
-            revealedItem(listState = listState, key = "notes", itemIndex = 5) {
-                NotesSection(
-                    copy = copy,
-                    notes = content.notes,
-                    languageCode = languageCode,
-                    onOpenLink = uriHandler::openUri,
-                    modifier = Modifier.padding(top = 38.dp),
-                )
-            }
-            revealedItem(listState = listState, key = "footer", itemIndex = 6) {
-                FooterSection(
-                    copy = copy,
-                    onOpenLink = uriHandler::openUri,
-                    modifier = Modifier.padding(top = 56.dp, bottom = 64.dp),
-                )
-            }
         }
+
+        PortfolioSelectionBar(
+            selectionState = selectionState,
+            copy = copy,
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(bottom = 24.dp),
+        )
     }
 }
 
