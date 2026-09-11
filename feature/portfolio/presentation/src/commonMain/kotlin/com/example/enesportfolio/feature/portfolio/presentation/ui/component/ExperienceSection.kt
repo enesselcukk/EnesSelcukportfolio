@@ -167,22 +167,44 @@ private fun SideColumn(
         }
         PortfolioCard {
             OverlineText(copy.eduOverline, languageCode = languageCode)
-            Text(
-                text = copy.eduUniversity,
-                style = MaterialTheme.typography.headlineMedium,
-                modifier = Modifier.padding(top = 6.dp),
+            EducationEntry(
+                university = copy.eduUniversity,
+                degree = copy.eduDegree,
+                whenText = copy.eduWhen,
             )
-            Text(
-                text = copy.eduDegree,
-                style = MaterialTheme.typography.bodySmall,
-                modifier = Modifier.padding(top = 5.dp),
-            )
-            Text(
-                text = copy.eduWhen,
-                style = MaterialTheme.typography.labelMedium,
-                modifier = Modifier.padding(top = 9.dp),
+            EducationEntry(
+                university = copy.edu2University,
+                degree = copy.edu2Degree,
+                whenText = copy.edu2When,
+                modifier = Modifier.padding(top = 22.dp),
             )
         }
+    }
+}
+
+@Composable
+private fun EducationEntry(
+    university: String,
+    degree: String,
+    whenText: String,
+    modifier: Modifier = Modifier,
+) {
+    Column(modifier = modifier) {
+        Text(
+            text = university,
+            style = MaterialTheme.typography.headlineMedium,
+            modifier = Modifier.padding(top = 6.dp),
+        )
+        Text(
+            text = degree,
+            style = MaterialTheme.typography.bodySmall,
+            modifier = Modifier.padding(top = 5.dp),
+        )
+        Text(
+            text = whenText,
+            style = MaterialTheme.typography.labelMedium,
+            modifier = Modifier.padding(top = 9.dp),
+        )
     }
 }
 
