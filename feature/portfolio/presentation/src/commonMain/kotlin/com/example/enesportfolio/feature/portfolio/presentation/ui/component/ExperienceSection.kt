@@ -74,7 +74,7 @@ private fun ExperienceTimeline(
             whenText = copy.j2When,
             company = "Nuevo Softwarehouse",
             role = copy.j2Role,
-            highlights = listOf(copy.j2Team, copy.j2a, copy.j2b, copy.j2c),
+            highlights = listOf(copy.j2Team, copy.j2a, copy.j2b, copy.j2c, copy.j2d),
         )
         TimelineEntry(
             whenText = copy.j3When,

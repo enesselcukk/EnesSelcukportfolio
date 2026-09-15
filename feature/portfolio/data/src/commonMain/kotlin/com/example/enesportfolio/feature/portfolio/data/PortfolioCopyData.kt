@@ -54,6 +54,7 @@ internal object PortfolioCopyData {
     j2a = "Owned the architecture of İŞMER Intranet end to end and shipped the app to Google Play and Huawei AppGallery.",
     j2b = "Maintained and improved Android apps for Migros İK, Hürriyet, Havaş, OYAK, and Avivasa, serving 500K+ / 1M+ active users. Crash-free rate improved from 98.5% to 99.4%.",
     j2c = "Refactored legacy Java/Kotlin to MVVM with Coroutines and Flow. Removed 50+ obsolete modules and reduced build time by 25%.",
+    j2d = "Mentored intern developers: code reviews, onboarding, and day-to-day Android delivery.",
     j2Team = "Worked in a team of 15+.",
     j3When = "Jul 2020 – Apr 2022",
     j3Company = "Osmaniye Korkut Ata University — IT Department",
@@ -70,10 +71,11 @@ internal object PortfolioCopyData {
     stackArch = "Architecture",
     stackSec = "Security",
     stackCi = "CI/CD & tests",
+    stackMethod = "Methodologies",
     eduOverline = "Education",
     eduUniversity = "Sakarya University",
     eduDegree = "M.S. Management Information Systems (Thesis)",
-    eduWhen = "2026 – Present",
+    eduWhen = "2026 – 2027",
     edu2University = "Osmaniye Korkut Ata University",
     edu2Degree = "B.S. Management Information Systems",
     edu2When = "2018 – 2022 · GPA 3.6 / 4.0",
@@ -149,6 +151,7 @@ internal object PortfolioCopyData {
     j2a = "İŞMER İntranet'in mimarisini ben kurguladım. Uygulamayı Google Play ve Huawei AppGallery'ye çıkardım.",
     j2b = "Migros İK, Hürriyet, Havaş, OYAK ve Avivasa uygulamalarını geliştirdim ve canlıda tuttum. Kullanıcı sayısı 500 bin–1 milyon bandında; çökmesiz oran %98,5'ten %99,4'e çıktı.",
     j2c = "Eski Java/Kotlin kodunu Coroutines ve Flow ile MVVM'e taşıdım. 50'den fazla kullanılmayan modülü kaldırdım; derleme süresi %25 kısaldı.",
+    j2d = "Stajyer geliştiricilere mentorluk yaptım: kod incelemesi, oryantasyon ve günlük Android teslim süreçleri.",
     j2Team = "15+ kişilik bir takımda çalıştık.",
     j3When = "Temmuz 2020 – Nisan 2022",
     j3Company = "Osmaniye Korkut Ata Üniversitesi — Bilgi İşlem",
@@ -165,10 +168,11 @@ internal object PortfolioCopyData {
     stackArch = "Mimari",
     stackSec = "Güvenlik",
     stackCi = "CI/CD & test",
+    stackMethod = "Metodolojiler",
     eduOverline = "Eğitim",
     eduUniversity = "Sakarya Üniversitesi",
     eduDegree = "Yönetim Bilişim Sistemleri, Yüksek Lisans (Tezli)",
-    eduWhen = "2026 – Devam ediyor",
+    eduWhen = "2026 – 2027",
     edu2University = "Osmaniye Korkut Ata Üniversitesi",
     edu2Degree = "Yönetim Bilişim Sistemleri, Lisans",
     edu2When = "2018 – 2022 · GANO 3.6 / 4.0",
@@ -224,7 +228,8 @@ internal object PortfolioCopyData {
         "MasterKey",
       ),
     ),
-    SkillGroup("CI/CD & tests", listOf("Jenkins", "Gradle", "JUnit", "Espresso", "Mockito", "Firebase")),
+    SkillGroup("CI/CD & tests", listOf("Jenkins", "GitHub Actions", "Gradle", "JUnit", "Espresso", "Mockito", "Firebase")),
+    SkillGroup("Methodologies", listOf("Agile", "Scrum", "Kanban")),
   )
 
   fun contentFor(language: AppLanguage): PortfolioContent {
@@ -239,6 +244,7 @@ internal object PortfolioCopyData {
         2 -> copy.stackArch
         3 -> copy.stackSec
         4 -> copy.stackCi
+        5 -> copy.stackMethod
         else -> group.title
       }
       group.copy(title = title)
