@@ -175,12 +175,12 @@ def main():
     story.append(Paragraph("Android Developer", styles["title"]))
     story.append(
         Paragraph(
-            'İstanbul, Türkiye | +90 552 686 82 25 | '
+            'İstanbul, Turkey | +90 552 686 82 25 | '
             '<a href="mailto:enesselcu25@gmail.com" color="#1a56db">enesselcu25@gmail.com</a> | '
+            '<a href="https://enesselcuk.com" color="#1a56db">Portfolio</a> | '
             '<a href="https://github.com/enesselcukk" color="#1a56db">GitHub</a> | '
             '<a href="https://www.linkedin.com/in/enes-selçuk-26a9ba18a/" color="#1a56db">LinkedIn</a> | '
-            '<a href="https://medium.com/@enesselcuk" color="#1a56db">Medium</a> | '
-            '<a href="https://enesselcuk.com" color="#1a56db">Portfolio</a>',
+            '<a href="https://medium.com/@enesselcuk" color="#1a56db">Medium</a>',
             styles["contact"],
         )
     )
@@ -192,9 +192,10 @@ def main():
             "Android Developer with <b>5+ years</b> of experience. I build production Android apps, secure banking SDKs, "
             "and cross-platform applications with <b>Kotlin</b>, <b>Jetpack Compose</b>, "
             "<b>Kotlin Multiplatform (KMP)</b>, and <b>Compose Multiplatform (CMP)</b>. "
-            "I worked on projects for <b>Garanti BBVA</b>, <b>Migros</b>, and <b>Hürriyet</b>. "
+            "On KMP projects, I built the shared network layer with <b>Ktor Client</b>, using the <b>Darwin</b> engine for iOS. "
+            "I worked on projects for <b>Garanti BBVA</b>, <b>Migros</b>, <b>Hürriyet</b>, <b>Havaş</b>, and <b>İŞMER Intranet</b>. "
             "I focus on <b>MVI/MVVM</b>, <b>Server-Driven UI (SDUI)</b>, mobile security "
-            "(<b>mTLS/TLS</b>, biometrics, <b>KYC/NFC</b>), and multi-module architecture. "
+            "(<b>mTLS</b>, biometrics, <b>KYC/NFC</b>), and multi-module architecture. "
             "I also work on <b>CI/CD</b> pipelines and <b>unit/UI testing</b>.",
             styles["body"],
         )
@@ -205,14 +206,15 @@ def main():
 
     # Eteration
     story.append(Paragraph("Eteration Bilişim A.Ş. (Contractor at Garanti BBVA Bank)", styles["job_title"]))
-    story.append(Paragraph("Senior / Mid Android Developer | Oct 2023 – Apr 2026", styles["job_meta"]))
+    story.append(Paragraph("Senior / Mid Android Developer | Oct 2023 – Apr 2026 · 30+ member cross-functional team", styles["job_meta"]))
     eteration_bullets = [
         "Built a <b>modular SDUI SDK</b> with Jetpack Compose and MVI for <b>10+ screens/flows</b>. The backend team can update UI <b>without app store releases</b>, replacing a <b>monthly release cycle</b> with instant backend-driven changes.",
-        "Implemented <b>mTLS/TLS</b>, certificate pinning, and secure token auth for App-to-App banking. This removed unauthorized third-party access and <b>passed the security audit with zero critical findings</b> on first review.",
+        "Implemented <b>mTLS</b>, certificate pinning, and secure token auth for App-to-App banking. This removed unauthorized third-party access and <b>passed the security audit with zero critical findings</b> on first review.",
         "Developed <b>KYC SDKs</b> with NFC ID scan, OCR, and liveness check. Onboarding time dropped from <b>8 min → 3 min</b> and verification success rate reached <b>92%</b>.",
         "Built a <b>Server Push SDK</b> by integrating the third-party <b>HiveMQ</b> library with Kotlin Flow, Channels, and MVI. During ATM cash withdrawals, the mobile banking screen updates <b>automatically without manual refresh</b>. The solution was designed for <b>high performance and reliability</b> in critical banking flows.",
-        "Designed <b>Individual and Corporate login</b> with custom Manual DI. Memory use went down by <b>18%</b> and login flow bugs dropped by <b>45%</b> after release.",
+        "Delivered <b>Login SDK</b> and <b>Approve SDK</b> for individual and corporate banking with custom Manual DI. Memory use went down by <b>18%</b> and login flow bugs dropped by <b>45%</b> after release.",
         "Wrote <b>50+ Unit and Compose UI tests</b> (JUnit, Espresso, Mockito) and set up <b>Jenkins CI/CD</b>. Test coverage reached <b>80%</b> and pipeline time went from <b>38 min → 14 min</b>.",
+        "Used <b>GitHub Copilot</b> and <b>ChatGPT</b> to increase development efficiency and improve code quality.",
     ]
     for b in eteration_bullets:
         story.append(bullet(b, styles["bullet"]))
@@ -220,12 +222,14 @@ def main():
 
     # Nuevo
     story.append(Paragraph("Nuevo Softwarehouse", styles["job_title"]))
-    story.append(Paragraph("Android Developer | Jun 2022 – Oct 2023", styles["job_meta"]))
+    story.append(Paragraph("Android Developer | Jun 2022 – Oct 2023 · 15+ member engineering team", styles["job_meta"]))
     nuevo_bullets = [
+        "Led <b>İŞMER İntranet</b> end-to-end as the primary Android developer: made all <b>architectural decisions</b> (MVVM, modular structure, API integration) and built the corporate employee portal (news, announcements, directory, feedback modules). Delivered production releases on <b>Google Play</b>, <b>Huawei AppGallery</b>, and the <b>App Store</b>.",
         "Maintained and improved Android apps for <b>Migros-İK, Hürriyet, Havaş, OYAK</b>, and <b>Avivasa</b>. Apps serve <b>500K+ / 1M+</b> active users. Crash-free rate improved from <b>98.5% → 99.4%</b>.",
         "Refactored legacy <b>Java/Kotlin</b> code to <b>MVVM</b> with Coroutines and Flow. We removed <b>50+</b> old modules/classes and cut build time by <b>25%</b>.",
         "Integrated <b>WebView</b> for live reports and dynamic content, enabling flexible web-based updates without native app releases.",
-        "Managed releases on <b>Google Play</b> and <b>Huawei AppGallery (HMS)</b>. I handled end-to-end production releases and improved the release process to reduce rollback cases.",
+        "Managed store releases and production delivery for multiple client apps on <b>Google Play</b> and <b>Huawei AppGallery (HMS)</b>.",
+        "Mentored intern developers: <b>code reviews</b>, onboarding, and day-to-day Android delivery.",
     ]
     for b in nuevo_bullets:
         story.append(bullet(b, styles["bullet"]))
@@ -233,10 +237,13 @@ def main():
 
     # University
     story.append(Paragraph("Osmaniye Korkut Ata University (IT Dept.)", styles["job_title"]))
-    story.append(Paragraph("Part-Time Android Developer | Jul 2020 – Apr 2022", styles["job_meta"]))
+    story.append(Paragraph("Part-Time Android Developer | Jul 2020 – Apr 2022 · 5 member development team", styles["job_meta"]))
     for b in [
-        "Built the official university app with <b>Kotlin</b>, <b>MVVM</b>, and <b>Firebase</b> for user authentication and news feeds.",
-        "Added auth and news feed features to support daily student engagement on campus.",
+        "Developed a youth center app with member registration, news, and authentication "
+        "features using <b>Java</b> and <b>MVP</b>; implemented the authentication layer with "
+        "<b>Firebase</b>.",
+        "Contributed to the official university mobile app built with <b>Kotlin</b>, "
+        "<b>MVVM</b>, and <b>Firebase</b>, including login and campus news feed modules.",
     ]:
         story.append(bullet(b, styles["bullet"]))
 
@@ -245,9 +252,11 @@ def main():
     skills = [
         ("Languages", "Kotlin, Java, C#, SQL"),
         ("Android & KMP", "Jetpack Compose, CMP, KMP, Coroutines, Flow, Room, Retrofit, Hilt, Koin, Manual DI, ViewModel, Navigation"),
+        ("Networking / iOS", "Ktor, Ktor Client, Darwin (iOS)"),
         ("Architecture", "Clean Architecture, MVI, MVVM, Multi-Module, Repository Pattern, DI (Hilt / Manual / Koin), SDUI"),
-        ("Security & Hardware", "mTLS/TLS, Certificate Pinning, Biometric Auth, NFC, OCR, Liveness, QR Code"),
-        ("CI/CD & Tools", "Git, Jenkins, Gradle, JUnit, Espresso, Mockito, Android Studio, Firebase"),
+        ("Security & Hardware", "mTLS/TLS, Biometrics, KYC, NFC, Android Keystore, EncryptedSharedPreferences (AES256-SIV/GCM), MasterKey, Room with SQLCipher, R8 Obfuscation, Root Detection, Certificate Pinning, OCR, Liveness, QR Code"),
+        ("CI/CD & Tools", "Git, Jenkins, GitHub Actions, Gradle, JUnit, Espresso, Mockito, Android Studio, Firebase"),
+        ("Methodologies", "Agile, Scrum, Kanban"),
     ]
     skill_rows = [
         [Paragraph(label, styles["skills_label"]), Paragraph(value, styles["skills_value"])]
@@ -267,6 +276,14 @@ def main():
 
     story.append(Paragraph("EDUCATION", styles["section"]))
     story.append(section_rule())
+    story.append(Paragraph("Sakarya University", styles["job_title"]))
+    story.append(
+        Paragraph(
+            "Master of Science in Management Information Systems (Thesis) | 2026 – 2027",
+            styles["job_meta"],
+        )
+    )
+    story.append(Spacer(1, 4))
     story.append(Paragraph("Osmaniye Korkut Ata University", styles["job_title"]))
     story.append(
         Paragraph(
@@ -279,29 +296,34 @@ def main():
     story.append(section_rule())
     apps = [
         (
-            "Garanti BBVA Mobile Banking",
-            "Advanced Payment, OCR, NFC, Biometrics",
+            "Garanti BBVA Mobile",
+            "Banking SDKs: SDUI, Login, Approve, KYC, and Server Push.",
             "https://play.google.com/store/apps/details?id=com.garanti.cepsubesi",
         ),
         (
-            "Migros IK Employee Portal",
-            "QR Authentication & Employee Portal",
+            "Migros İK",
+            "Employee portal and QR authentication.",
             "https://play.google.com/store/apps/details?id=tr.migros.fiori",
         ),
         (
-            "Hürriyet Mobile App",
-            "High-Traffic News & Media App",
+            "Hürriyet",
+            "High-traffic news and media app.",
             "https://play.google.com/store/apps/details?id=hurriyet.mobil.android",
         ),
         (
-            "Havaş Mobile Application",
-            "Enterprise Transport & Logistics Platform",
+            "Havaş Mobile",
+            "Enterprise transport and logistics platform.",
             "https://play.google.com/store/apps/details?id=com.havas.mobile",
         ),
         (
-            "Renault Port",
-            "Automotive Customer Portal",
+            "Renault PORT",
+            "Automotive customer portal.",
             "https://play.google.com/store/apps/details?id=tr.com.renault.port",
+        ),
+        (
+            "İŞMER İntranet",
+            "Corporate intranet. Architecture owned end to end.",
+            "https://play.google.com/store/apps/details?id=com.ismer.portal",
         ),
     ]
     for name, focus, url in apps:
@@ -319,17 +341,22 @@ def main():
     personal_projects = [
         (
             "Spotter",
-            "Compose Multiplatform (CMP) app with shared UI across platforms",
+            "Compose Multiplatform app with shared UI across Android and iOS. Modular features and a Material 3 design system.",
             "https://github.com/enesselcukk/Spotter",
         ),
         (
             "KMPNews",
-            "Kotlin Multiplatform (KMP) news app with shared business logic and data layer",
+            "Kotlin Multiplatform news client with shared domain, data, and presentation in commonMain, and Ktor Client networking (Darwin on iOS).",
             "https://github.com/enesselcukk/KMPNews",
         ),
         (
-            "Personal Portfolio (CMP Web)",
-            "Compose Multiplatform portfolio site shipped as Web/Wasm",
+            "FieldFlow",
+            "Multi-module Android app in Kotlin and Jetpack Compose (MVVM). Room + SQLCipher at rest; AES-GCM and Android Keystore.",
+            "https://github.com/enesselcukk/FieldFlow",
+        ),
+        (
+            "EnesSelcukportfolio",
+            "Personal site in Kotlin and Compose Multiplatform (web). Responsive layout and a shared design system.",
             "https://github.com/enesselcukk/EnesSelcukportfolio",
         ),
     ]
