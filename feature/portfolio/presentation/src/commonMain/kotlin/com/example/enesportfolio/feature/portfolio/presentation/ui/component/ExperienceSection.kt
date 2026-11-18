@@ -65,6 +65,12 @@ private fun ExperienceTimeline(
         OverlineText(copy.expOverline, languageCode = languageCode)
         SectionTitle(copy.expTitle, modifier = Modifier.padding(top = 6.dp))
         TimelineEntry(
+            whenText = copy.j0When,
+            company = copy.j0Company,
+            role = copy.j0Role,
+            highlights = listOf(copy.j0a, copy.j0b, copy.j0c),
+        )
+        TimelineEntry(
             whenText = copy.j1When,
             company = "Eteration Bilişim A.Ş.",
             role = copy.j1Role,
