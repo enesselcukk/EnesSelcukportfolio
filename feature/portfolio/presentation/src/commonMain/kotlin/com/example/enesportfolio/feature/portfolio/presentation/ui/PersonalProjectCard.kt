@@ -51,17 +51,27 @@ import com.example.enesportfolio.core.designsystem.theme.Palette
 import com.example.enesportfolio.core.designsystem.theme.projectCardTheme
 import com.example.enesportfolio.core.model.ProjectItem
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.Res
-import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.garanti_1
-import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.garanti_2
-import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.garanti_3
-import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.garanti_icon
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.berberim_1
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.berberim_2
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.berberim_3
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.berberim_4
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.berberim_icon
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.fieldflow_activation
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.fieldflow_bio
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.fieldflow_dashboard
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.fieldflow_home
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.fieldflow_map
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.fieldflow_ocr
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.garanti_1
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.garanti_2
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.garanti_3
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.garanti_icon
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.github_profile
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.gymin_1
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.gymin_2
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.gymin_3
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.gymin_4
+import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.gymin_icon
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.havas_1
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.havas_2
 import com.example.enesportfolio.feature.portfolio.presentation.generated.resources.havas_3
@@ -630,6 +640,24 @@ private fun galleryFor(index: String): PersonalProjectGallery = when (index) {
     )
     "10" -> PersonalProjectGallery(
         wides = listOf(Res.drawable.portfolio_github, Res.drawable.github_profile),
+    )
+    "F1" -> PersonalProjectGallery(
+        phones = listOf(
+            Res.drawable.berberim_1,
+            Res.drawable.berberim_2,
+            Res.drawable.berberim_3,
+            Res.drawable.berberim_4,
+        ),
+        icon = Res.drawable.berberim_icon,
+    )
+    "F2" -> PersonalProjectGallery(
+        phones = listOf(
+            Res.drawable.gymin_1,
+            Res.drawable.gymin_2,
+            Res.drawable.gymin_3,
+            Res.drawable.gymin_4,
+        ),
+        icon = Res.drawable.gymin_icon,
     )
     else -> PersonalProjectGallery()
 }

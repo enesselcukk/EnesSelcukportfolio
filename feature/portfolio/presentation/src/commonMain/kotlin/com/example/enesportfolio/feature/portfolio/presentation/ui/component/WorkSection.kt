@@ -24,7 +24,17 @@ internal fun WorkSection(
     modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier.fillMaxWidth()) {
-        OverlineText(content.copy.prodOverline, languageCode = languageCode)
+        val hasFreelance = content.freelanceProjects.isNotEmpty()
+        if (hasFreelance) {
+            OverlineText(content.copy.freelanceOverline, languageCode = languageCode)
+            SectionTitle(content.copy.freelanceTitle, modifier = Modifier.padding(top = 5.dp, bottom = 16.dp))
+            ProjectGrid(projects = content.freelanceProjects, onOpenLink = onOpenLink, columns = 2)
+        }
+        OverlineText(
+            content.copy.prodOverline,
+            languageCode = languageCode,
+            modifier = Modifier.padding(top = if (hasFreelance) 32.dp else 0.dp),
+        )
         SectionTitle(content.copy.prodTitle, modifier = Modifier.padding(top = 5.dp, bottom = 16.dp))
         ProjectGrid(projects = content.productionProjects, onOpenLink = onOpenLink)
         OverlineText(
@@ -54,7 +64,7 @@ private fun ProjectGrid(
                     rowProjects.forEach { project ->
                         PersonalProjectCard(
                             project = project,
-                            onClick = { onOpenLink(project.url) },
+                            onClick = { if (project.url.isNotBlank()) onOpenLink(project.url) },
                             modifier = Modifier.weight(1f),
                         )
                     }
